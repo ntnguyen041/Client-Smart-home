@@ -1,0 +1,95 @@
+@use '../../style/style' as st;
+
+.sideBar{
+  background: st.$whileColor;
+  box-shadow: 1px 0px 4px st.$greyText;
+  width: 18%;
+  height: 100%;
+  overflow: auto;
+  .logoDiv {
+    height: 10%;
+    padding: 1.5rem 1.5rem 0;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    img {
+      max-width: 20px;
+      margin-right: 0.5rem;
+      background-color: st.$inputColor;
+      border-radius: 2px;
+      padding: 0.2rem;
+    }
+    h2 {
+      font-size: st.$h2FontSize;
+      color: st.$PrimaryColor;
+    }
+  }
+  .menuDiv,
+  .setingDiv {
+    .divTitle {
+      font-size: st.$h3FontSize;
+      color: st.$blaclColor;
+      padding: 0 1.5rem 0 1.5rem;
+    }
+    .menuLists {
+      .listItem {
+        padding: 0.2rem 1.5rem;
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "";
+          height:  0%;
+          left: 0;
+          width: 5px;
+          bottom: 0;
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 10px;
+          background: st.$PrimaryColor;
+        }
+        .menuLink {
+          color: st.$greyText;
+          font-weight: 500;
+          .icon {
+            margin-right: 0.5rem;
+          }
+        }
+
+        &:hover .menuLink{
+          color: st.$PrimaryColor;
+          transition: 0;
+        }
+
+        &:hover::before{
+          height: 100%;
+          transition: .3s  ease;
+        }
+      }
+    }
+  }
+  .www{
+    height: 10%;
+  }
+  .sideBarCard{
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+    margin-right: 1rem;
+    .icon{
+      position: absolute;
+      background: st.$HoverColor;
+      border: 10px solid st.$whileColor;
+      font-size: 3rem;
+      border-radius: 50%;
+      top: -50%;
+      right: 50%;
+      transform: translate(50%);
+      z-index: 2;
+    }
+    .CardContent{
+      position: absolute;
+      padding: 1rem;
+      background: st.$HoverColor;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
+}

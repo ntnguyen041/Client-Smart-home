@@ -1,0 +1,76 @@
+@use './style/style' as st;
+  body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 1rem;
+  }
+   
+  html{
+    font-size: 90%;
+  }
+  a{
+    text-decoration: none;
+  }
+  ul{
+    padding-left: 0px;
+  }
+  li{
+    list-style: none;
+  }
+  .icon{
+    font-size: st.$h2FontSize;
+  }
+  img{
+    width: 100%;
+    height: auto;
+  }
+  .flex{
+    display: flex;
+    align-items: center;
+  }
+  .grid{
+    display: grid;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .grid2{
+    display: grid;
+    align-content: center;
+    gap: 3rem;
+  }
+   
+   
+  .btn{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px st.$inputColor;
+    padding: .8rem 1rem;
+    color: st.$textColor;
+  }
+  .btn .icon{
+    margin-left: .5rem;
+  }
+  .btn:hover{
+    background: st.$paleGreen;
+    color: st.$PrimaryColor;
+  }
+  
+  .container{
+    position: relative;
+    width: 95vw;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: st.$bgColor;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 8px st.$greyText;
+  }
+  ::-webkit-scrollbar{
+    display: none;
+  }
