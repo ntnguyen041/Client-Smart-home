@@ -4,7 +4,7 @@ import './Top.css'
 import { useState } from "react";
 import { useEffect } from "react";
 import img from '../../../Aseets/abc.png'
-import img2 from '../../../Aseets/abc.png'
+import img2 from '../../../Aseets/home.png'
 import video from '../../../Aseets/video/video.mp4'
 import {MdDarkMode} from 'react-icons/md'
 import {BsArrowRightShort} from 'react-icons/bs'
@@ -20,9 +20,11 @@ const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
 
 
 const Top =()=>{
+    const [User,getUser]=useState([]);
 
-
-
+    // useEffect(()=>{
+    //    
+    // })
 
 
     const [timeString,setTimeString]=useState('');

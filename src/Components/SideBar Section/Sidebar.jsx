@@ -34,7 +34,7 @@ const Sidebar =()=>{
                         </li>
                         
                         <li className="listItem">
-                        <NavLink to="/seting" className={"menuLink flex"}>
+                        <NavLink to="/room" className={"menuLink flex"}>
                                 <HiOutlineViewGrid className="icon"/>
                                 <span className="smailText">
                                     Room

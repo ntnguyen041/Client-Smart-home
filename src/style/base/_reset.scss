@@ -1,11 +1,32 @@
-@use './style/style' as st;
-  body{
+@use '../abstracts/color' as *;
+body{
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
     padding: 1rem;
   }
+
+
+  .light{
+    .text{
+        color: $dark-900;
+    }
+    .background{
+        background-color: $dark-000;
+    }
+  }
+  .dark{
+      .text{
+        color: white;
+    }
+    .background{
+        background-color: $dark-600;
+    }
+  }
+
+
+
    
   html{
     font-size: 90%;

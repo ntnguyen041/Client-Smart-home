@@ -25,7 +25,7 @@ const Listing =()=>{
         <div className="LisitingSection ">
 
             <div className="heading flex">
-                <h1>Driver on and off</h1>
+                <h1>Device Controll</h1>
                 <button className="btn flex">
                     See all <BsArrowRightShort className="icon"/>
                 </button>
