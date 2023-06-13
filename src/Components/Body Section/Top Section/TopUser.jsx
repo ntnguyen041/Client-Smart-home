@@ -1,11 +1,12 @@
 
-import React from "react";
-import './Top.css'
+import React, { useContext } from "react";
+import './Top'
 import { useState } from "react";
 import { useEffect } from "react";
 import img from '../../../Aseets/abc.png'
 
 import {MdDarkMode} from 'react-icons/md'
+import { AppContext } from "../../../style/context/AppContext";
 
 function formatDate(date){
     if(!date) return '';
@@ -20,10 +21,11 @@ const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
 
 const TopUser =()=>{
 
+    const {themeStyle,setIsDay,isDay}=useContext(AppContext);
 
-
-
-
+    const toggoleTheme =()=>{
+        setIsDay(!isDay)
+    }
     const [timeString,setTimeString]=useState('');
     useEffect(()=>{
         setInterval(()=>{
@@ -36,12 +38,12 @@ const TopUser =()=>{
 
     return(
         <div className="topSection">
-            <div className="headerSection flex">
+             <div className="headerSection flex">
                 <div className="title">
                     <h1> Welcome to Smart Home</h1>
                     <p>Hello Nguyên Tấn, Welcome back! </p>
                 </div>
-
+               
                 <div className="timeHome">
                     <h1 id="timet">{timeString}</h1>
                     <p id="timet">{date}</p>
@@ -49,16 +51,19 @@ const TopUser =()=>{
                 </div>
 
                 <div className="adminDiv flex">
-                    <MdDarkMode  className="icon"/>
+                   <div>
+                     <input type="checkbox" id="dark-mode"  value={isDay} onChange={toggoleTheme} checked={isDay}/>
+                        <label for="dark-mode"></label>
+                     <div class="background"></div>
+                   </div>
+                  
                     <div className="adminImage">
                         <img src={img} alt="Tan Nguyen" />
                     </div>
                 </div>
             </div>
-            
-            
         </div>
-       
+           
     )
     
 }

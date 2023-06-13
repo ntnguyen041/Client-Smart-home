@@ -1,7 +1,5 @@
 /*  */
 .sideBar {
-  background: hsl(0, 0%, 100%);
-  box-shadow: 1px 0px 4px rgb(190, 190, 190);
   width: 18%;
   height: 100%;
   overflow: auto;
@@ -15,18 +13,12 @@
 .sideBar .logoDiv img {
   max-width: 20px;
   margin-right: 0.5rem;
-  background-color: hsl(330, 12%, 97%);
   border-radius: 2px;
   padding: 0.2rem;
-}
-.sideBar .logoDiv h2 {
-  font-size: 1.25rem;
-  color: hsl(94, 59%, 35%);
 }
 .sideBar .menuDiv .divTitle,
 .sideBar .setingDiv .divTitle {
   font-size: 1rem;
-  color: hsl(0, 0%, 18%);
   padding: 0 1.5rem 0 1.5rem;
 }
 .sideBar .menuDiv .menuLists .listItem,
@@ -44,11 +36,9 @@
   bottom: 0;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  background: hsl(94, 59%, 35%);
 }
 .sideBar .menuDiv .menuLists .listItem .menuLink,
 .sideBar .setingDiv .menuLists .listItem .menuLink {
-  color: rgb(190, 190, 190);
   font-weight: 500;
 }
 .sideBar .menuDiv .menuLists .listItem .menuLink .icon,
@@ -57,7 +47,6 @@
 }
 .sideBar .menuDiv .menuLists .listItem:hover .menuLink,
 .sideBar .setingDiv .menuLists .listItem:hover .menuLink {
-  color: hsl(94, 59%, 35%);
   transition: 0;
 }
 .sideBar .menuDiv .menuLists .listItem:hover::before,
@@ -69,6 +58,8 @@
   height: 10%;
 }
 .sideBar .sideBarCard {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
   padding: 1rem;
   text-align: center;
   position: relative;
@@ -76,8 +67,6 @@
 }
 .sideBar .sideBarCard .icon {
   position: absolute;
-  background: #bdf094;
-  border: 10px solid hsl(0, 0%, 100%);
   font-size: 3rem;
   border-radius: 50%;
   top: -50%;
@@ -88,7 +77,6 @@
 .sideBar .sideBarCard .CardContent {
   position: absolute;
   padding: 1rem;
-  background: #bdf094;
   border-radius: 10px;
   overflow: hidden;
 }/*# sourceMappingURL=Sidebar.css.map */
