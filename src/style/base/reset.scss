@@ -461,9 +461,11 @@ body{
     .cardSection{
       .rightCard{
         text-align: center;
+        padding: 0;
         .buttons{
           flex-direction: column;
           margin: auto;
+         
         }
         .btn{
           width: 100%;
@@ -476,6 +478,10 @@ body{
     .darkmode{
       display: block;
     }
+   }
+   ///li
+   .LisitingSection .secContainer .singleItem {
+    width: 35%;
    }
    
 }
@@ -494,6 +500,15 @@ body{
   
 }
 @media only screen and (max-width: 745px){
+  body{
+    display: block;
+    padding: 0;
+  }
+  .container{
+    width: 101vw;
+    height: 101vh;
+    border-radius: 0;
+  }
    .sideBar{
     .logoDiv{
       flex-direction: column;
@@ -528,6 +543,9 @@ body{
   .CardContent{
     display: none;
   }
+  .topSection .cardSection .rightCard {
+    padding: 0;
+  }
   label{
     width: 3.7em;
     height: 2em;
@@ -545,5 +563,7 @@ body{
   input:checked ~ label:after{
     left: 3.5rem;
   }
- 
+  .mainContent{
+    padding: 0;
+  }
 }
