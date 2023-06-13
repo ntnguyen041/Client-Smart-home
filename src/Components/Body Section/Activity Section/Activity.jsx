@@ -32,7 +32,7 @@ const Activity =({ color, onChange } )=>{
 
 
 
-        <div>
+        <div className='colorlogo'>
           <h1>Logo Color</h1>
         <ColorPicker
           color={state.color}

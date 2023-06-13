@@ -91,9 +91,6 @@ body {
 .light .sideBar {
   background: hsl(0, 0%, 100%);
 }
-.light .sideBar .logoDiv {
-  height: 10%;
-}
 .light .sideBar .logoDiv img {
   background-color: hsl(330, 12%, 97%);
 }
@@ -116,10 +113,6 @@ body {
 .light .sideBar .menuDiv .menuLists .listItem:hover .menuLink,
 .light .sideBar .setingDiv .menuLists .listItem:hover .menuLink {
   color: hsl(94, 59%, 35%);
-}
-.light .sideBarCard .icon {
-  background: #bdf094;
-  border: 10px solid hsl(0, 0%, 100%);
 }
 .light .sideBarCard .CardContent {
   background: #bdf094;
@@ -212,9 +205,6 @@ body {
 }
 .night .sideBar {
   background: hsl(0, 1%, 29%);
-}
-.night .sideBar .logoDiv {
-  height: 10%;
 }
 .night .sideBar .logoDiv img {
   background-color: none;
@@ -358,4 +348,97 @@ img {
   margin-top: 2rem;
   gap: 2rem;
   align-items: flex-start;
+}
+
+@media only screen and (max-width: 990px) {
+  .bottom {
+    flex-direction: column;
+  }
+  .cardSection {
+    flex-direction: column;
+  }
+  .cardSection .rightCard, .cardSection .leftCard {
+    width: 100%;
+    flex-basis: 100%;
+  }
+  .cardSection .leftCard {
+    align-self: flex-start;
+    height: 10px !important;
+  }
+  .cardSection .leftCard .sideBarCard {
+    display: block;
+  }
+}
+@media only screen and (max-width: 725px) {
+  .headerSection {
+    flex-direction: column;
+    text-align: center;
+  }
+  .headerSection .adminDiv {
+    display: none;
+  }
+  .cardSection .rightCard {
+    text-align: center;
+  }
+  .cardSection .rightCard .buttons {
+    flex-direction: column;
+    margin: auto;
+  }
+  .cardSection .rightCard .btn {
+    width: 100%;
+  }
+  .sideBar .darkmode {
+    display: block;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .topSection .cardSection .rightCard {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .topSection .cardSection .rightCard h1 {
+    font-size: 1.25rem;
+  }
+}
+@media only screen and (max-width: 745px) {
+  .sideBar .logoDiv {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sideBar .logoDiv img {
+    margin-right: 2.5rem;
+    max-width: 50px;
+  }
+  .sideBar .logoDiv h2 {
+    display: none;
+  }
+  .menuDiv .divTitle, .menuDiv .smailText {
+    display: none;
+  }
+  .menuDiv .menuLink .listItem .menuLink {
+    justify-content: center;
+  }
+  .menuDiv .menuLink .listItem .icon {
+    font-size: 1.5rem;
+  }
+  .CardContent {
+    display: none;
+  }
+  label {
+    width: 3.7em;
+    height: 2em;
+    border-radius: 3rem;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.3), inset 0px -5px 15px rgba(255, 255, 255, 0.3);
+  }
+  label:after {
+    height: 1.7rem;
+    width: 1.7rem;
+    background: #f2f2f2;
+    border-radius: 3rem;
+    top: 0.1rem;
+    left: 0.1rem;
+  }
+  input:checked ~ label:after {
+    left: 3.5rem;
+  }
 }/*# sourceMappingURL=reset.css.map */

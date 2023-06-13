@@ -122,7 +122,7 @@ body{
     .sideBar{
       background: st.$whileColor;
       .logoDiv {
-        height: 10%;
+ 
         img {
           background-color: st.$inputColor;
         }
@@ -152,10 +152,6 @@ body{
       }
     }
     .sideBarCard{
-      .icon{
-        background: st.$HoverColor;
-        border: 10px solid st.$whileColor;
-      }
       .CardContent{
         background: st.$HoverColor;
       }
@@ -280,7 +276,7 @@ body{
     .sideBar{
       background: st1.$whileColor;
       .logoDiv {
-        height: 10%;
+  
         img {
           background-color: none;
         }
@@ -307,6 +303,7 @@ body{
           }
         }
       }
+     
     }
     .sideBarCard{
       .icon{
@@ -321,9 +318,6 @@ body{
         color: st.$textColor;
       }
     }
-
-
-
     ////
     .LisitingSection{
       .heading{
@@ -356,12 +350,6 @@ body{
           }
       }
   }
-
-
-
-
-
-
   }
 
   html{
@@ -436,4 +424,126 @@ body{
         gap:2rem;
         align-items:flex-start ;
     }
+}
+@media only screen and (max-width: 990px){
+  .bottom{
+    flex-direction: column;
+  }
+  .cardSection{
+      flex-direction: column;
+
+    .rightCard, .leftCard{
+      width: 100%;
+      flex-basis: 100%;
+    }
+
+    .leftCard{
+      align-self: flex-start;
+      height: 10px !important;
+      .sideBarCard{
+        display: block;
+      }
+    }
+
+
+  }  
+  /// listing
+  
+}
+@media only screen and (max-width: 725px){
+    .headerSection{
+      flex-direction: column;
+      text-align: center;
+      .adminDiv{
+        display: none;
+      }
+    }
+    .cardSection{
+      .rightCard{
+        text-align: center;
+        .buttons{
+          flex-direction: column;
+          margin: auto;
+        }
+        .btn{
+          width: 100%;
+        }
+       
+      }
+      
+    }
+   .sideBar{
+    .darkmode{
+      display: block;
+    }
+   }
+   
+}
+@media only screen and (max-width: 390px){
+  .topSection{
+    .cardSection{
+      .rightCard{
+        text-align: center;
+        padding: 2rem 1rem;
+        h1{
+          font-size: st.$h2FontSize;
+        }
+      }
+    }
+  }
+  
+}
+@media only screen and (max-width: 745px){
+   .sideBar{
+    .logoDiv{
+      flex-direction: column;
+      text-align: center;
+ 
+
+      img{
+        margin-right: 2.5rem;
+        max-width: 50px;
+      }
+      h2{
+        display: none;
+      }
+    }
+   }
+   .menuDiv{
+    .divTitle, .smailText{
+      display: none;
+    }
+    .menuLink{
+      .listItem{
+        .menuLink{
+          justify-content: center;
+        }
+        .icon{
+          font-size: st.$h1FontSize;
+        }
+      }
+    }
+    
+   }
+  .CardContent{
+    display: none;
+  }
+  label{
+    width: 3.7em;
+    height: 2em;
+    border-radius: 3rem;
+    box-shadow: inset 0px 5px 15px rgba(0,0,0,0.3), inset 0px -5px 15px rgba(255,255,255,0.3);
+  }
+  label:after{
+    height: 1.7rem;
+    width: 1.7rem;
+    background: #f2f2f2;
+    border-radius: 3rem;
+    top: 0.1rem;
+    left: 0.1rem;
+  }
+  input:checked ~ label:after{
+    left: 3.5rem;
+  }
+ 
 }

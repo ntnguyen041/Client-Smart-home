@@ -17,13 +17,8 @@ import img from '../../../Aseets/abc.png'
 const Listing =()=>{
   const so=20;
 
-   
-
-  
-
     return(
         <div className="LisitingSection ">
-
             <div className="heading flex">
                 <h1>Device Controll</h1>
                 <button className="btn flex">
@@ -32,7 +27,6 @@ const Listing =()=>{
             </div>
 
             <div className="secContainer flex">
-
                 <div className="singleItem">
                 <AiFillHeart className="icon"/>
                 <img src={img} alt="led" />
@@ -57,39 +51,40 @@ const Listing =()=>{
                 <h3>home led</h3>
                 </div>
             </div>
-        {/*  */}
-        <Line
-    data={{
-      labels: [20,40,60,80,100],
-      datasets: [
-        {
-          data: [0, so/1.5,so*0.7, so*0.4,so],
-          label: "nhiệt độ",
-          borderColor: "#3e95cd",
-          fill: false
-        },
-        {
-          data: [0,so/2, so*0.3, so/1.5,55],
-          label: "Độ ẩm",
-          borderColor: "#8e5ea2",
-          fill: false
-        },
-        {
-          data: [0,so/3, so, so,20],
-          label: "Độ ẩm",
-          borderColor: "#8e5aa2",
-          fill: false
-        },
-        {
-          data: [0,so/1.5, so/2, so*0.14,11],
-          label: "Độ ẩm",
-          borderColor: "#8e5ss2",
-          fill: false
-        },
-      ]
-    }}
-    
-  />
+            <div className="chart">
+              <h1>Temperature chart</h1>
+                      <Line
+                  data={{
+                    labels: [20,40,60,80,100],
+                    datasets: [
+                      {
+                        data: [0, so/1.5,so*0.7, so*0.4,so],
+                        label: "nhiệt độ",
+                        borderColor: "#3e95cd",
+                        fill: false
+                      },
+                      {
+                        data: [0,so/2, so*0.3, so/1.5,55],
+                        label: "Độ ẩm",
+                        borderColor: "#8e5ea2",
+                        fill: false
+                      },
+                      {
+                        data: [0,so/3, so, so,20],
+                        label: "Độ ẩm",
+                        borderColor: "#8e5aa2",
+                        fill: false
+                      },
+                      {
+                        data: [0,so/1.5, so/2, so*0.14,11],
+                        label: "Độ ẩm",
+                        borderColor: "#8e5ss2",
+                        fill: false
+                      },
+                    ]
+                  }}
+                  />
+            </div>
         </div>
     )
 }

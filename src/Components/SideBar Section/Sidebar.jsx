@@ -10,10 +10,11 @@ import {RiRemoteControlLine} from 'react-icons/ri'
 import {AiOutlineQuestionCircle} from 'react-icons/ai'
 import {AiOutlineAreaChart} from 'react-icons/ai'
 import {AiFillSetting} from 'react-icons/ai'
+import Darkmode from "../Body Section/Top Section/darkmode";
 const Sidebar =()=>{
     return(
         <div className="sideBar">
-             <NavLink to="/">
+                <NavLink to="/">
                 <div className="logoDiv flex">
                 <img src={logo} alt="Smart Home" />
                     <h2>CKC IOT</h2>
@@ -58,17 +59,19 @@ const Sidebar =()=>{
                                 </span>
                         </NavLink>
                         </li>
-
                     </ul>
+                    
                 </div>
-                <div className="www"></div>
+                
                 <div className="sideBarCard">
-                    <AiOutlineQuestionCircle className="icon"/>
                     <div className="CardContent">
                         <h3>Help Center</h3>
                         <p>Having trouble in CKC IOT, please contact us from for more questions.</p>
                         <button className="btn"> Go to help center</button>
                     </div>
+                </div>
+                <div className="darkmode">
+                    <Darkmode/>
                 </div>
         </div>
     )

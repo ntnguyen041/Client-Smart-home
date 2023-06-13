@@ -4,6 +4,7 @@ import './Top.css'
 import img2 from '../../../Aseets/home.png'
 import video from '../../../Aseets/video/video.mp4'
 import {BsArrowRightShort} from 'react-icons/bs'
+import {AiOutlineQuestionCircle} from 'react-icons/ai'
 const TopContent =()=>{
     return(
         <div>
