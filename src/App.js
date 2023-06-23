@@ -1,27 +1,59 @@
-
-import { useEffect, useState,useRef } from 'react';
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from '../src/Components/Body Section/pages/home';
+import Room from '../src/Components/Body Section/pages/Room';
+import Driver from './Components/Body Section/pages/Driver';
 import Layout from './Components/Layout/layout';
-import {io} from "socket.io-client";
+import Login from './Components/Login/Login';
 import { AppProvider } from './style/context/AppContext';
+import Register from './Components/Register/Register';
 
-// https://server-smart-home.onrender.com
-//const socket = io(["http://localhost:3001","https://server-smart-home.onrender.com"]);
+
+
+const appRoutes =[
+  {
+    path:"/Login",
+    element:(<Login/>)
+  },
+  {
+    path:"/Register",
+    element:(<Register/>)
+  },
+  {
+    path:"/",
+    element:(<Layout/>),
+    children:[
+      {
+        index:true,
+        element:<Home/>
+      },
+      {
+        path:"Room",
+        element:<Room/>
+      },
+      {
+        path:"Driver",
+        element:<Driver/>
+      },
+    ]
+  }
+ 
+]
+
+const router = createBrowserRouter([
+  {
+    element:(
+      <Outlet/>
+    ),
+    children:appRoutes
+  }
+])
 
 function App() {
- 
-  useEffect(() => {
-    const  socket = io.connect("http://localhost:3001")
-    socket.on("conneting",(data)=>{
-      console.log(data)
-    })
-  }, []);
-
-
-  return (<div>
+  return (
     <AppProvider>
-    <Layout/>
+     <RouterProvider router={router}/>
     </AppProvider>
-  </div>)
+ )
 }
 
 export default App;

@@ -546,6 +546,7 @@ body{
   .topSection .cardSection .rightCard {
     padding: 0;
   }
+  .darkmode{
   label{
     width: 3.7em;
     height: 2em;
@@ -563,6 +564,7 @@ body{
   input:checked ~ label:after{
     left: 3.5rem;
   }
+}
   .mainContent{
     padding: 0;
   }

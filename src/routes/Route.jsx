@@ -5,6 +5,7 @@ import Seting from "../Components/Body Section/pages/setings";
 import Home from "../Components/Body Section/pages/home";
 import Room from "../Components/Body Section/pages/Room"
 import Driver from "../Components/Body Section/pages/Driver"
+import Login from "../Components/Login/Login";
 
 const Router =()=>{
     return(
@@ -13,6 +14,7 @@ const Router =()=>{
           <Route path="/seting" element={<Seting/>} />
           <Route path="/room" element={<Room/>} />
           <Route path="/Driver" element={<Driver/>} />
+          <Route path="/Login" element={<Login/>} />
           <Route path="*" element={<Navigate to="/"/>}/>
           </Routes>
        

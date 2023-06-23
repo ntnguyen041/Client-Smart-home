@@ -1,14 +1,12 @@
 import React from "react";
 import { NavLink,Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+
 import './Sidebar.css'
 
 import logo from '../../Aseets/logo.png'
 import {AiFillHome} from 'react-icons/ai'
 import {HiOutlineViewGrid} from 'react-icons/hi'
 import {RiRemoteControlLine} from 'react-icons/ri'
-import {AiOutlineQuestionCircle} from 'react-icons/ai'
-import {AiOutlineAreaChart} from 'react-icons/ai'
 import {AiFillSetting} from 'react-icons/ai'
 import Darkmode from "../Body Section/Top Section/darkmode";
 const Sidebar =()=>{
@@ -25,6 +23,14 @@ const Sidebar =()=>{
                         Start My Home
                     </h3>
                     <ul className="menuLists grid">
+                    <li className="listItem">
+                            <NavLink to="/Login" className={"menuLink flex"}>
+                                <AiFillHome className="icon"/>
+                                <span className="smailText">
+                                    Login
+                                </span>
+                            </NavLink>
+                        </li>
                         <li className="listItem">
                             <NavLink to="/" className={"menuLink flex"}>
                                 <AiFillHome className="icon"/>
@@ -70,7 +76,7 @@ const Sidebar =()=>{
                         <button className="btn"> Go to help center</button>
                     </div>
                 </div>
-                <div className="darkmode">
+                <div>
                     <Darkmode/>
                 </div>
         </div>

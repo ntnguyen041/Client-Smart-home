@@ -8,7 +8,9 @@ export const AppProvider = ({children})=>{
         light:'light',
         night:'night'
     }
-    return <AppContext.Provider value={{isDay,setIsDay,themeStyle:themeStyle[isDay?'night':'light']}}>
+    return (
+        <AppContext.Provider value={{isDay,setIsDay,themeStyle:themeStyle[isDay?'night':'light']}}>
         {children}
-    </AppContext.Provider>
+        </AppContext.Provider>
+    )
 };
