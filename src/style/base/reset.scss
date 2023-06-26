@@ -156,6 +156,13 @@ body{
         background: st.$HoverColor;
       }
     }
+    .listuser{
+      background: st.$itemCardColor;
+      &:hover{
+        background: st.$itemCardHome;
+        box-shadow: 0 2px 2px st.$inputColor ;
+    }
+    }
     }
 
 
@@ -349,6 +356,13 @@ body{
               }
           }
       }
+  }
+  .listuser{
+    background: st1.$itemCardColor;
+    &:hover{
+      background: st1.$itemCardHome;
+      box-shadow: 0 2px 2px st1.$inputColor ;
+  }
   }
   }
 

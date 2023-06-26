@@ -4,7 +4,7 @@ import './Top'
 import { useState } from "react";
 import { useEffect } from "react";
 import img from '../../../Aseets/abc.png'
-
+import { AppContext } from "../../../style/context/AppContext";
 
 import Darkmode from "./darkmode";
 
@@ -28,12 +28,16 @@ const TopUser =()=>{
             setTimeString(newTimeS);
         },1000);
     },[]);
+
+    const {user}=useContext(AppContext);
+
+
     return(
         <div className="topSection">
              <div className="headerSection flex">
                 <div className="title">
                     <h1> Welcome to Smart Home</h1>
-                    <p>Hello Nguyên Tấn, Welcome back! </p>
+                    <p>Hello {user.nameUser}, Welcome back! </p>
                 </div>
                
                 <div className="timeHome">
@@ -44,7 +48,7 @@ const TopUser =()=>{
                 <div className="adminDiv flex">
                     <Darkmode/>
                     <div className="adminImage">
-                        <img src={img} alt="Tan Nguyen" />
+                        <img src={user.imageUser} alt="Tan Nguyen" />
                     </div>
                 </div>
             </div>

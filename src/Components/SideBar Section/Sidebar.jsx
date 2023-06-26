@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink,Link, useNavigate } from "react-router-dom";
 
 import './Sidebar.css'
 
@@ -8,8 +8,14 @@ import {AiFillHome} from 'react-icons/ai'
 import {HiOutlineViewGrid} from 'react-icons/hi'
 import {RiRemoteControlLine} from 'react-icons/ri'
 import {AiFillSetting} from 'react-icons/ai'
+import {SlLogout} from 'react-icons/sl'
 import Darkmode from "../Body Section/Top Section/darkmode";
 const Sidebar =()=>{
+    const navigate =useNavigate();
+    const Logoutuser=()=>{
+        localStorage.clear();
+        navigate("/Login");
+    }
     return(
         <div className="sideBar">
                 <NavLink to="/">
@@ -23,14 +29,6 @@ const Sidebar =()=>{
                         Start My Home
                     </h3>
                     <ul className="menuLists grid">
-                    <li className="listItem">
-                            <NavLink to="/Login" className={"menuLink flex"}>
-                                <AiFillHome className="icon"/>
-                                <span className="smailText">
-                                    Login
-                                </span>
-                            </NavLink>
-                        </li>
                         <li className="listItem">
                             <NavLink to="/" className={"menuLink flex"}>
                                 <AiFillHome className="icon"/>
@@ -62,6 +60,14 @@ const Sidebar =()=>{
                                 <AiFillSetting className="icon"/>
                                 <span className="smailText">
                                     Settings
+                                </span>
+                        </NavLink>
+                        </li>
+                        <li className="listItem">
+                        <NavLink onClick={Logoutuser} className={"menuLink flex"}>
+                                <SlLogout className="icon"/>
+                                <span className="smailText">
+                                    Logout
                                 </span>
                         </NavLink>
                         </li>

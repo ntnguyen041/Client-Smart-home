@@ -1,1 +1,28 @@
-/*# sourceMappingURL=Activity.css.map */
+/*  */
+.container-listuser {
+  width: 25%;
+}
+.container-listuser .flexx {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container-listuser .content-user .listuser {
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+.container-listuser .content-user .listuser .icon {
+  font-size: 2.5rem;
+  border-radius: 5px;
+  padding: 5px;
+}
+.container-listuser .content-user .listuser .adminImage {
+  border-radius: 10px;
+  width: 4rem;
+  overflow: hidden;
+}
+.container-listuser .content-user .listuser .adminImage img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}/*# sourceMappingURL=Activity.css.map */

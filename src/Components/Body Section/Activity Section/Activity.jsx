@@ -1,46 +1,42 @@
 
 import iro from '@jaames/iro';
 import './Activity.css'
-import React, { useEffect, useState, } from "react";
-import ColorPicker from './colorPicker'
+import React, { useEffect, useState, useContext } from "react";
 import { BsArrowRightShort, BsDatabase } from 'react-icons/bs'
-import { io } from "socket.io-client";
-const socket = io.connect('http://localhost:3001', { reconnect: true });
+import { AppContext } from '../../../style/context/AppContext';
 const Activity = () => {
-
-  const [user, setUser] = useState();
-
-  const userName ="123";
-  socket.emit("joinRoom", userName);
- 
-  const handleLogin = (userName) => {
-    console.log(user)
-    console.log(user[0]._id)
-    
-  }
-  useEffect(() => {
-    socket.emit("getAllUser", {uid: userName});
-    socket.on('listUserView', (data) => {
-      setUser(data)
-     
-    })
-  }, [user]);
-
+  const { listUser } = useContext(AppContext);
   
-  return (
-    
-    <div>
-      <div className="usermanage flex">
-        <h1>User check</h1>
-        <button type='button' className="btn flex" onClick={handleLogin}>
-          See all <BsArrowRightShort className="icon" />
-        </button>
-      </div>
-      <div className='aaaaa'>
-      </div>
-       
+  if (listUser === "") {
+    <div className='container-listuser'>
     </div>
-  )
+  }
+  else {
+    const content = listUser.map((user) =>
+
+      <div key={user._id} className="listuser flexx">
+        <div className="adminImage">
+          <img src={user.imageUser} alt={user.nameUser} />
+        </div>
+        <div>
+          <h3>{user.nameUser}</h3>
+          <p>{user.phoneUser}</p>
+        </div>
+      </div>
+    );
+    return (
+      <div className='container-listuser'>
+        <div className="usermanage flexx">
+          <h1>User check</h1>
+          <button type='button' className="btn flexx">
+            See all <BsArrowRightShort className="icon" />
+          </button>
+        </div>
+        <div className='content-user'>{content}</div>
+      </div>
+    )
+  }
+
 
 }
 export default Activity

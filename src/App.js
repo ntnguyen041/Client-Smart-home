@@ -1,4 +1,4 @@
-import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Outlet, RouterProvider, createBrowserRouter,Navigate, Routes, Route} from 'react-router-dom';
 import Home from '../src/Components/Body Section/pages/home';
 import Room from '../src/Components/Body Section/pages/Room';
 import Driver from './Components/Body Section/pages/Driver';
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <AppProvider>
-     <RouterProvider router={router}/>
+     <RouterProvider router={router} />
     </AppProvider>
  )
 }

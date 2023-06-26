@@ -117,6 +117,13 @@ body {
 .light .sideBarCard .CardContent {
   background: #bdf094;
 }
+.light .listuser {
+  background: hsl(120, 5%, 88%);
+}
+.light .listuser:hover {
+  background: hsl(120, 27%, 87%);
+  box-shadow: 0 2px 2px hsl(330, 12%, 97%);
+}
 
 .night .container {
   background: hsl(240, 2%, 12%);
@@ -263,6 +270,13 @@ body {
 }
 .night .LisitingSection .secContainer .singleItem h3 {
   color: hsl(0, 0%, 51%);
+}
+.night .listuser {
+  background: hsl(0, 1%, 23%);
+}
+.night .listuser:hover {
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 2px 2px hsl(300, 1%, 36%);
 }
 
 html {
