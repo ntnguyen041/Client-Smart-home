@@ -1,8 +1,5 @@
 import React, { useState,useContext, useEffect } from "react";
-import {io} from "socket.io-client";
 import Sidebar from "../SideBar Section/Sidebar"
-import Router from "../../routes/Route";
-
 import '../../style/base/reset.css';
 import { AppContext } from "../../style/context/AppContext";
 import { Navigate, Outlet } from "react-router-dom";

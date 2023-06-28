@@ -1,6 +1,8 @@
 import {createContext, useState,useEffect} from "react";
-import { io } from "socket.io-client";
-const socket = io.connect('http://localhost:3001', { reconnect: true });
+// import { io } from "socket.io-client";
+//const socket = io.connect(['http://localhost:3001','https://server-smart-home.onrender.com'], { reconnect: true });
+// const socket = io.connect('http://localhost:3001', { reconnect: true });
+import socket from "../../socket/socket";
 export const AppContext =createContext();
 
 export const AppProvider = ({children})=>{
@@ -11,14 +13,15 @@ export const AppProvider = ({children})=>{
             const id = user._id;
             socket.emit("joinRoom", id);
             ////// lay lai du lieu user
-            socket.emit("getOneUser",{id:id})
+            socket.emit("getOneUser",id)
             socket.on("getUser",(data)=>{
                 setUser(data)
             })
             // lay toan bo user
-            socket.emit("getAllUser", {id:id});
+            socket.emit("getAllUser", id);
             socket.on('listUserView', (data) => {
                 setListUser(data)
+                console.log(data)
             })
         }
       }, [user]);

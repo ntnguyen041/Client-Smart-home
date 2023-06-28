@@ -30,31 +30,37 @@ const TopUser =()=>{
     },[]);
 
     const {user}=useContext(AppContext);
-
-
-    return(
+  
+    if(user===null){
         <div className="topSection">
-             <div className="headerSection flex">
-                <div className="title">
-                    <h1> Welcome to Smart Home</h1>
-                    <p>Hello {user.nameUser}, Welcome back! </p>
-                </div>
-               
-                <div className="timeHome">
-                    <h1 id="timet">{timeString}</h1>
-                    <p id="timet">{date}</p>
-                </div>
-
-                <div className="adminDiv flex">
-                    <Darkmode/>
-                    <div className="adminImage">
-                        <img src={user.imageUser} alt="Tan Nguyen" />
+        </div>
+    }else{
+        return(
+            <div className="topSection">
+                 <div className="headerSection flex">
+                    <div className="title">
+                        <h1> Welcome to Smart Home</h1>
+                        <p>Hello {user.nameUser}, Welcome back! </p>
+                    </div>
+                   
+                    <div className="timeHome">
+                        <h1 id="timet">{timeString}</h1>
+                        <p id="timet">{date}</p>
+                    </div>
+    
+                    <div className="adminDiv flex">
+                        <Darkmode/>
+                        <div className="adminImage">
+                            <img src={user.imageUser} alt="Tan Nguyen" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-           
-    )
+               
+        )
+    }
+
+   
     
 }
 

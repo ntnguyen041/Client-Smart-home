@@ -6,7 +6,7 @@ import { BsArrowRightShort, BsDatabase } from 'react-icons/bs'
 import { AppContext } from '../../../style/context/AppContext';
 const Activity = () => {
   const { listUser } = useContext(AppContext);
-  
+  console.log(listUser)
   if (listUser === "") {
     <div className='container-listuser'>
     </div>
