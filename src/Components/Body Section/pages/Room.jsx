@@ -1,11 +1,11 @@
-import React, { useEffect, useState, } from "react";
-import Listing from "../Listing Section/Listing";
-import Activity from "../Activity Section/Activity";
+import React from "react";
 import TopUser from "../Top Section/TopUser";
+import Rooms from "../Room/Rooms";
 const room =()=>{
     return(
       <div>
-            <TopUser/>  
+            <TopUser/>
+            <Rooms/>
         </div>
     )
     

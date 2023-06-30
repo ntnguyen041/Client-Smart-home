@@ -8,6 +8,7 @@ export const AppContext =createContext();
 export const AppProvider = ({children})=>{
     const [user,setUser]=useState(JSON.parse(localStorage.getItem("accessToKen")));
     const [listUser,setListUser] =useState("");
+    const [listRoom,setListRoom] =useState("");
     useEffect(() => {
         if(user!==null){
             const id = user._id;
@@ -21,8 +22,12 @@ export const AppProvider = ({children})=>{
             socket.emit("getAllUser", id);
             socket.on('listUserView', (data) => {
                 setListUser(data)
-                console.log(data)
             })
+            socket.emit("getitemhome",user.homeId[0])
+            socket.on("listRoom",data=>{
+                setListRoom(data)
+            })
+            // console.log();
         }
       }, [user]);
       
@@ -37,7 +42,8 @@ export const AppProvider = ({children})=>{
             setIsDay,
             themeStyle:themeStyle[isDay?'night':'light'],
             user,
-            listUser
+            listUser,
+            listRoom
             }}>
         {children}
         </AppContext.Provider>

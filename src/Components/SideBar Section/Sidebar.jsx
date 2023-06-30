@@ -1,8 +1,6 @@
 import React from "react";
-import { NavLink,Link, useNavigate } from "react-router-dom";
-
+import { NavLink,Link, useNavigate, Navigate } from "react-router-dom";
 import './Sidebar.css'
-
 import logo from '../../Aseets/logo.png'
 import {AiFillHome} from 'react-icons/ai'
 import {HiOutlineViewGrid} from 'react-icons/hi'
@@ -14,8 +12,10 @@ const Sidebar =()=>{
     const navigate =useNavigate();
     const Logoutuser=()=>{
         localStorage.clear();
-        navigate("/Login");
+        navigate("/Login")
+        console.log("thoat")
     }
+
     return(
         <div className="sideBar">
                 <NavLink to="/">
@@ -39,7 +39,7 @@ const Sidebar =()=>{
                         </li>
                         
                         <li className="listItem">
-                        <NavLink to="/room" className={"menuLink flex"}>
+                        <NavLink to="/Room" className={"menuLink flex"}>
                                 <HiOutlineViewGrid className="icon"/>
                                 <span className="smailText">
                                     Room
@@ -56,26 +56,30 @@ const Sidebar =()=>{
                         </NavLink>
                         </li>
                         <li className="listItem">
-                        <NavLink to="/seting" className={"menuLink flex"}>
+                        <NavLink to="/Seting" className={"menuLink flex"}>
                                 <AiFillSetting className="icon"/>
                                 <span className="smailText">
                                     Settings
                                 </span>
                         </NavLink>
                         </li>
-                        <li className="listItem">
-                        <NavLink onClick={Logoutuser} className={"menuLink flex"}>
+                    <br />
+                    <br />
+                    <br />
+                    <li className="listItem">
+                        <div onClick={Logoutuser} className={"menuLink flex"}>
                                 <SlLogout className="icon"/>
                                 <span className="smailText">
                                     Logout
                                 </span>
-                        </NavLink>
-                        </li>
+                        </div>
+                        </li>    
                     </ul>
                     
                 </div>
                 
                 <div className="sideBarCard">
+                    
                     <div className="CardContent">
                         <h3>Help Center</h3>
                         <p>Having trouble in CKC IOT, please contact us from for more questions.</p>

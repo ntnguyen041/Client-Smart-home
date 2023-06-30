@@ -1,34 +1,37 @@
-import React, { useState,useContext, useEffect } from "react";
-import Sidebar from "../SideBar Section/Sidebar"
+import React, { useState, useContext, useEffect} from "react";
+import Sidebar from "../SideBar Section/Sidebar";
 import '../../style/base/reset.css';
 import { AppContext } from "../../style/context/AppContext";
-import { Navigate, Outlet } from "react-router-dom";
- 
+import { Navigate, Outlet, useNavigate} from "react-router-dom";
 
-const Layout =()=>{
-   
-    const [user,setUser]=useState(localStorage.getItem("accessToKen"));
-    useEffect(()=>{
-        const login =localStorage.getItem("accessToKen");
-        if(login){
-            setUser(login);
+
+
+const Layout = () => {
+    const navigate = useNavigate();
+    const [user, setUser] = useState(localStorage.getItem("accessToKen"));
+    const { themeStyle } = useContext(AppContext);
+    useEffect(() => {
+        const user =localStorage.getItem("accessToKen");
+        if (!user) {
+            navigate("/Login")
         }
-    },[]);
-    const {themeStyle}=useContext(AppContext);
-    if(user===null){
-        return <Navigate replace to="/Login"/>
-    } else{
+    }, [user]);
+    if (!user) {
+        return <Navigate replace to="/Login" />
+    } else {
         return (
-            <div className={themeStyle}>
             <div className="container">
-                <Sidebar/>  
-                <div className="mainContent">
-                        <Outlet/>
-                </div>
+               <div className={themeStyle}>
+                <div className="container">
+                    <Sidebar />
+                    <div className="mainContent">
+                    <Outlet />
+                     </div>
+                 </div>
+             </div> 
             </div>
-        </div>
+            
         )
     }
-    
 }
 export default Layout 

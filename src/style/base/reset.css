@@ -262,9 +262,6 @@ body {
   background: hsl(0, 0%, 100%);
   box-shadow: 0 2px 2px hsl(300, 1%, 36%);
 }
-.night .LisitingSection .secContainer .singleItem img {
-  max-width: 100px;
-}
 .night .LisitingSection .secContainer .singleItem .icon {
   color: hsl(94, 59%, 35%);
 }

@@ -4,7 +4,6 @@ import './Top'
 import { useState } from "react";
 import { useEffect } from "react";
 import img from '../../../Aseets/abc.png'
-import { AppContext } from "../../../style/context/AppContext";
 
 import Darkmode from "./darkmode";
 
@@ -29,7 +28,7 @@ const TopUser =()=>{
         },1000);
     },[]);
 
-    const {user}=useContext(AppContext);
+    const [user,setUser]=useState(JSON.parse(localStorage.getItem("accessToKen")));
   
     if(user===null){
         <div className="topSection">
