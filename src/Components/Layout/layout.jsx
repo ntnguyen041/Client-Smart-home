@@ -3,10 +3,10 @@ import Sidebar from "../SideBar Section/Sidebar";
 import '../../style/base/reset.css';
 import { AppContext } from "../../style/context/AppContext";
 import { Navigate, Outlet, useNavigate} from "react-router-dom";
+ 
 
 
-
-const Layout = () => {
+const Layout = ({users}) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(localStorage.getItem("accessToKen"));
     const { themeStyle } = useContext(AppContext);
@@ -17,20 +17,22 @@ const Layout = () => {
         }
     }, [user]);
     if (!user) {
-        return <Navigate replace to="/Login" />
+        document.body.style.background = "url('')";
+        <Navigate replace to="/Login" />
     } else {
         return (
+           
             <div className="container">
                <div className={themeStyle}>
                 <div className="container">
                     <Sidebar />
                     <div className="mainContent">
-                    <Outlet />
+                        <Outlet />
                      </div>
                  </div>
              </div> 
             </div>
-            
+           
         )
     }
 }

@@ -1,31 +1,58 @@
 @use '../../style/abstracts/style1.scss' as st1;
 @use '../../style/abstracts/style.scss' as st;
-body{
+
+body {
     background: st1.$bgColor;
+    text-align: center;
+    background: url("../../Aseets/backgound2.jpg");
+    background-size: cover;
+    overflow: hidden;
 }
-.loginContainer{
+
+.slg {
+    margin-top: 30%;
+}
+ 
+ 
+.loginContainer {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 400px;
-    background: st1.$blaclColor;
-    h1{
+    background: hsl(0deg 100% 98.06% / 14%);
+
+    // text-align: center;
+    h1 {
+        color: aqua;
         text-align: center;
         padding: 0 0 20px 0;
         border-bottom: 1px solid silver;
         font-size: st.$h1FontSize;
     }
+
     border-radius: 1rem;
 
-   form{
+    .logologin {
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 50%;
+            padding-top: 1rem;
+        }
+    }
+
+    form {
         padding: 0 2rem;
         box-sizing: border-box;
-        .txt_field{
+
+        .txt_field {
             position: relative;
             border-bottom: 2px solid #adadad;
             margin: 30px 0;
-            input{
+
+            input {
                 width: 100%;
                 padding: 0 5px;
                 height: 40px;
@@ -35,16 +62,18 @@ body{
                 outline: none;
                 color: st1.$textColor;
             }
-            label{
+
+            label {
                 position: absolute;
-                top:50%;
+                top: 50%;
                 left: 2rem;
                 color: st1.$textColor;
                 transform: translateY(-50%);
                 pointer-events: none;
                 transition: .5s;
             }
-            span{
+
+            span {
                 content: "";
                 position: absolute;
                 top: 40px;
@@ -53,19 +82,38 @@ body{
                 height: 2px;
                 background: #2691d9;
             }
-            .form-control:focus-visible ~ .form-label{
-                top:-5px;
+
+            .form-control:focus-visible~.form-label {
+                top: -5px;
             }
-            
+
         }
-        .btn{
+
+        .btn {
             width: 100%;
             background: st1.$inputColor;
             margin-top: 1rem;
             margin-bottom: 1rem;
         }
-        .btn:hover{
+
+        .btn:hover {
             background: st1.$textColor;
         }
-   }
+    }
+}
+
+@media only screen and (max-width:412px) {
+    body {
+        height: 90vh;
+        background: url("../../Aseets/background.jpg");
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+
+
+    }
+
+    .loginContainer {
+        width: 300px;
+    }
 }

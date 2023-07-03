@@ -12,7 +12,6 @@ const Listing = () => {
   const so = 20;
   const [user,setUser]=useState(JSON.parse(localStorage.getItem("accessToKen")));
   const [listRoom,setListRoom] =useState("");
-
   useEffect(() => {
     if(user!==null){
         socket.emit("getitemhome",user.homeId[0])

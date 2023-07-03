@@ -4,7 +4,7 @@ import './Top'
 import { useState } from "react";
 import { useEffect } from "react";
 import img from '../../../Aseets/abc.png'
-
+import { AppContext } from "../../../style/context/AppContext";
 import Darkmode from "./darkmode";
 
 function formatDate(date){
@@ -29,7 +29,8 @@ const TopUser =()=>{
     },[]);
 
     const [user,setUser]=useState(JSON.parse(localStorage.getItem("accessToKen")));
-  
+    const {listUser}=useContext(AppContext);
+    
     if(user===null){
         <div className="topSection">
         </div>
@@ -57,9 +58,7 @@ const TopUser =()=>{
             </div>
                
         )
-    }
-
-   
+    } 
     
 }
 

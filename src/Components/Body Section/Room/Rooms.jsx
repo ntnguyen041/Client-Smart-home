@@ -1,58 +1,85 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import socket from '../../../socket/socket';
 import "./Rooms.css"
-export default function Rooms() {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("accessToKen")));
-     
-    const [listRoom, setListRoom] = useState("");
+import { NavLink } from 'react-router-dom';
+import RoomPage from './RoomPage';
 
-    useEffect(() => {
-        if (user !== null) {
-            socket.emit("getitemhome", user.homeId[0])
-            socket.on("listRoom", data => {
-                setListRoom(data)
-            })
-            // console.log();
-        }
-    }, [user]);
-    const ckeckClick=(e)=>{
-         //e.currentTarget.classList.toggle('bg-salmon');
-         
+
+const listRoominitstate = {
+    loading: false,
+    data: [],
+    error: null
+}
+
+
+const listRoomReducer = (state, action) => {
+    switch (action.type) {
+        case 'GET_ROOM_API':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'GET_ROOM_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                data: action.data
+            }
+        case 'GET_ROOM_ERR':
+            return {
+                ...state,
+                data: [],
+                error: action.data
+            }
+        default:
     }
+}
+
+
+
+export default function Rooms() {
+    const [user] = useState(JSON.parse(localStorage.getItem("accessToKen")));
+    const [listRoom, listRoomdispatch] = useReducer(listRoomReducer, listRoominitstate)
+    useEffect(() => {
+        async function lisromm() {
+            listRoomdispatch({
+                type: 'GET_ROOM_API'
+            });
+            try {
+                socket.emit("getitemhome", user.homeId[0])
+                socket.on("listRoom", list => {
+                    listRoomdispatch({
+                        type: 'GET_ROOM_SUCCESS',
+                        data: list
+                        
+                    });
+                })
+            } catch (errr) {
+                listRoomdispatch({
+                    type: 'GET_ROOM_ERR'
+                });
+            }
+        }
+        lisromm();
+    }, [])
+    //
+   
+    
     return (
         <div className="RomContainer">
-            {listRoom ?
-                listRoom.map((Room) =>
+            {listRoom.loading ? "" :
+                listRoom.data.map((Room) =>
                     <div key={Room._id} className="singleItem flex">
-                        <div className='content'>
-                            <h3 className='texth'>{Room.nameRoom}</h3>
+                        <NavLink to={Room._id} className="content">
+                            <h1 className='texth'>{Room.nameRoom}</h1>
                             <div className='imageRoom'>
                                 <img src={Room.imageRoom} alt={Room.imageRoom} />
                             </div>
-                        </div>
-                        <div className='diverRoom'>
-                            nguyen
-                        </div>
-
+                        </NavLink>
                     </div>
                 )
-                : ""}
-
-
-            <div className={'singleItem flex'}>
-                <div className='content'>
-                    <h3 className='texth'>nguyeeennne</h3>
-                    <div className='imageRoom'>
-                        <img src="https://graceinmyspace.com/wp-content/uploads/2022/07/main-bedroom-bedding-768x1024.jpg" alt="adas" />
-                    </div>
-                </div>
-                <div className='diverRoom'>
-                    nguyen
-                </div>
-            </div>
-                        
-           
+            }
         </div>
     )
 }

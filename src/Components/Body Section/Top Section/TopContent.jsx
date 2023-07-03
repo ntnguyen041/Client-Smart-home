@@ -3,8 +3,7 @@ import React from "react";
 import './Top.css'
 import img2 from '../../../Aseets/home.png'
 import video from '../../../Aseets/video/video.mp4'
-import {BsArrowRightShort} from 'react-icons/bs'
-import {AiOutlineQuestionCircle} from 'react-icons/ai'
+ 
 const TopContent =()=>{
     return(
         <div>
@@ -16,8 +15,8 @@ const TopContent =()=>{
                    <p>Smart home system will serve you anytime, anywhere</p>
 
                    <div className="buttons flex">
-                       <button className="btn">Download</button>
-                       <button className="btn transparent">Start up</button>
+                       <button className="btn"> IOS </button>
+                       <button className="btn transparent">Android</button>
                    </div>
 
                    <div className="videoDiv"> 
@@ -28,16 +27,11 @@ const TopContent =()=>{
                <div className="leftCard flex">
                    <div className="main flex">
                        <div className="textDiv">
-                           <h1>My Start</h1>
-
+                           <h1>My Home</h1>
                            <div className="flex">
-                               <span> Today <br /> <small> 4 Oders</small> </span>
-                               <span> this month <br /> <small> 127 Oders</small> </span>
+                               <span> Heat <br /> <small> 28 °C</small> </span>
+                               <span> Humidity <br /> <small>97 %</small></span>
                            </div>
-                            <span className="flex link">
-                               Go to
-                               <BsArrowRightShort className="icon"/>
-                            </span>
                        </div>
 
                        <div className="imgDiv">

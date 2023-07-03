@@ -1,6 +1,14 @@
 /*  */
 body {
   background: hsl(240, 2%, 12%);
+  text-align: center;
+  background: url("../../Aseets/backgound2.jpg");
+  background-size: cover;
+  overflow: hidden;
+}
+
+.slg {
+  margin-top: 30%;
 }
 
 .loginContainer {
@@ -9,14 +17,23 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  background: hsl(0, 0%, 51%);
+  background: hsla(0, 100%, 98.06%, 0.14);
   border-radius: 1rem;
 }
 .loginContainer h1 {
+  color: aqua;
   text-align: center;
   padding: 0 0 20px 0;
   border-bottom: 1px solid silver;
   font-size: 1.5rem;
+}
+.loginContainer .logologin {
+  display: flex;
+  justify-content: center;
+}
+.loginContainer .logologin img {
+  width: 50%;
+  padding-top: 1rem;
 }
 .loginContainer form {
   padding: 0 2rem;
@@ -66,4 +83,17 @@ body {
 }
 .loginContainer form .btn:hover {
   background: hsl(240, 100%, 100%);
+}
+
+@media only screen and (max-width: 412px) {
+  body {
+    height: 90vh;
+    background: url("../../Aseets/background.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  .loginContainer {
+    width: 300px;
+  }
 }/*# sourceMappingURL=Login.css.map */

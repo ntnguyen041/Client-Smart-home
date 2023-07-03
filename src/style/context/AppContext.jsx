@@ -7,12 +7,12 @@ export const AppContext =createContext();
 
 export const AppProvider = ({children})=>{
     const [user,setUser]=useState(JSON.parse(localStorage.getItem("accessToKen")));
-    const [listUser,setListUser] =useState("");
-    const [listRoom,setListRoom] =useState("");
+    const [listUser,setListUser] =useState([]);
+    const [listRoom,setListRoom] =useState([]);
     useEffect(() => {
         if(user!==null){
             const id = user._id;
-            socket.emit("joinRoom", id);
+            socket.emit("joinRoom",  user._id);
             ////// lay lai du lieu user
             socket.emit("getOneUser",id)
             socket.on("getUser",(data)=>{
