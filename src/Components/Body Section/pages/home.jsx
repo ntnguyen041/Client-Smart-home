@@ -2,6 +2,7 @@ import React, {useContext } from "react";
 import Listing from "../Listing Section/Listing";
 import Activity from "../Activity Section/Activity";
 import Top from "../Top Section/Top";
+import TableSection from "../Table Section/TableSection";
  
 const home =()=>{
     return(
@@ -11,6 +12,7 @@ const home =()=>{
                 <Listing/>
                 <Activity/>
             </div>
+            <TableSection/>
         </div>
    
     )

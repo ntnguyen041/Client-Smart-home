@@ -3,11 +3,16 @@ import TopUser from '../Top Section/TopUser'
 import { NavLink, json, useLocation, } from 'react-router-dom'
 import { useReducer, useEffect, useState } from 'react'
 import socket from '../../../socket/socket'
+import MUIDataTable from "mui-datatables";
 
+const columns = ["nameDevice", "iconName", "pinEsp", "status","consumes","countOn","timeOn","timeOff","dayRunning","dayRunningStatus"];
+
+const options = {
+    filterType: 'checkbox',
+};
 const listDeviceinitstate = {
     loading: false,
     data: [],
-    //device: [],
     error: null
 }
 const listDeviceReducer = (state, action) => {
@@ -22,19 +27,19 @@ const listDeviceReducer = (state, action) => {
                 ...state,
                 loading: false,
                 data: action.data,
-                //device: action.data,
+
             }
         case 'GET_ERR':
             return {
                 ...state,
                 data: [],
-                //device: [],
+
                 error: action.data
             }
         default:
     }
 }
-export default function RoomPage(img,name) {
+export default function RoomPage() {
     const [user] = useState(JSON.parse(localStorage.getItem("accessToKen")));
     const Roomid = useLocation();
     const [listDevce, listDevcedispatch] = useReducer(listDeviceReducer, listDeviceinitstate)
@@ -52,7 +57,6 @@ export default function RoomPage(img,name) {
                         listDevcedispatch({
                             type: 'GET_SUCCESS',
                             data: list,
-                           // device: list.devicesId
                         });
                     })
                 } catch (errr) {
@@ -69,27 +73,27 @@ export default function RoomPage(img,name) {
         <div>
             <TopUser />
             <div className='containerRoom'>
-              
-                    <div className="singleItem flex">
-                        <NavLink to="/Room" className="content">
-                            <h1 className='texth'>{name}</h1>
-                            <div className='imageRoom'>
-                                <img src={img} alt={img} />
-                            </div>
-                        </NavLink>
-                    </div>
-              
-                 {listDevce.loading ? "loading..." :
-                     (listDevce.data).map((device)=>(
-                        <div key={device._id}>sadasd
-                        
-                            <h1>asdasdasd</h1>
+                <div className="singleItem flex">
+                    {listDevce.loading?"":
+                    <NavLink to="/Room" className="content">
+                        <h1 className='texth'>{listDevce.data.nameRoom}</h1>
+                        <div className='imageRoom'>
+                            <img src={listDevce.data.imageRoom} alt={listDevce.data.imageRoom} />
                         </div>
-                     ))
-
-                    // console.log(listDevce.data.devicesId)
-                
+                    </NavLink>
+                    }
+                   
+                </div>
+                <div className='Tabledevice'>
+                {listDevce.loading?"":
+                    <MUIDataTable
+                        title={listDevce.data.nameRoom}
+                        data={listDevce.data.devicesId}
+                        columns={columns}
+                        options={options}
+                    />
                 }
+                </div>
             </div>
 
         </div>

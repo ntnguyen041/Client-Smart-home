@@ -79,6 +79,9 @@
   padding: 1rem;
   font-size: 500;
 }
+.topSection .cardSection .rightCard #namehome {
+  margin-right: 1rem;
+}
 .topSection .cardSection .rightCard .buttons {
   gap: 1rem;
 }

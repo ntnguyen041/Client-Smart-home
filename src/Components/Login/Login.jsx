@@ -32,6 +32,7 @@ const Login = () => {
                 if (data !== null) {
                     setUser(data);
                     localStorage.setItem("accessToKen", JSON.stringify(data))
+                    localStorage.setItem("accessToKenHome", JSON.stringify(data.homeId[0]))
                     setExpandForm(true);
                     // generrateRecapcha();
                     // let appVerifier = window.recaptchaVerifier;

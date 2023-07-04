@@ -1,15 +1,23 @@
 
 @use '../abstracts/style.scss' as st;
 @use '../abstracts/style1.scss' as st1;
-body{
+ 
+// body{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin: auto;
+//     padding: 1rem;
+//     background:none;
+//   }
+  .layout{
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
     padding: 1rem;
-    background: none;
+    background:none;
   }
-
   .light{
     .container{
       background: st.$bgColor;
@@ -513,7 +521,7 @@ body{
   
 }
 @media only screen and (max-width: 745px){
-  body{
+  .layout{
     display: block;
     padding: 0;
   }
@@ -581,4 +589,10 @@ body{
   .mainContent{
     padding: 0;
   }
+  .container-listuser {
+    width: 100%;
+  }
+  #namehome{
+    margin-right: none;
+}
 }

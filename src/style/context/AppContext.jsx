@@ -14,19 +14,16 @@ export const AppProvider = ({children})=>{
             const id = user._id;
             socket.emit("joinRoom",  user._id);
             ////// lay lai du lieu user
-            socket.emit("getOneUser",id)
-            socket.on("getUser",(data)=>{
-                setUser(data)
-            })
+            // socket.emit("getOneUser",id)
+            // socket.on("getUser",(data)=>{
+            //     setUser(data)
+            // })
             // lay toan bo user
-            socket.emit("getAllUser", id);
-            socket.on('listUserView', (data) => {
-                setListUser(data)
-            })
-            socket.emit("getitemhome",user.homeId[0])
-            socket.on("listRoom",data=>{
-                setListRoom(data)
-            })
+            // socket.emit("getAllUser", id);
+            // socket.on('listUserView', (data) => {
+            //     setListUser(data)
+            // })
+
             // console.log();
         }
       }, [user]);
@@ -42,8 +39,6 @@ export const AppProvider = ({children})=>{
             setIsDay,
             themeStyle:themeStyle[isDay?'night':'light'],
             user,
-            listUser,
-            listRoom
             }}>
         {children}
         </AppContext.Provider>

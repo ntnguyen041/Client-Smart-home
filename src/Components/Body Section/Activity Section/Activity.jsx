@@ -4,6 +4,7 @@ import './Activity.css'
 import React, { useEffect, useState, useContext, Component, useReducer } from "react";
 import { BsArrowRightShort, BsDatabase } from 'react-icons/bs'
 import socket from '../../../socket/socket';
+import imga from '../../../Aseets/abc.jpg'
 
 
 
@@ -37,13 +38,13 @@ const usersReducer=(state,action)=>{
 const Activity = () => {
   const [user] = useState(JSON.parse(localStorage.getItem("accessToKen")));
   const [users,usersdispatch]=useReducer(usersReducer,usersinitstate)
-  
+  const homeId=JSON.parse(localStorage.getItem("accessToKenHome"));
   useEffect(() => {
     async function loaduserRom() {
       setTimeout(()=>{
         try {
           // lay toan bo user
-          socket.emit("getAllUser", { uid: user.uid, homeId: user.homeId[0] });
+          socket.emit("getAllUser", { uid: user.uid, homeId: homeId });
           socket.on('listUserView', (users) => {
             usersdispatch({
               type:'GET_SOCKET_SUCCESS',
@@ -62,7 +63,7 @@ const Activity = () => {
      
     }
     loaduserRom();
-  },[]);
+  },[homeId]);
 
     return (
       <div className='container-listuser'>
@@ -75,7 +76,7 @@ const Activity = () => {
         users.data.map((user) =>
             <div key={user.uid} className="listuser flexx">
               <div className="adminImage">
-                <img src={user.imageUser} alt={user.nameUser} />
+                <img src={user.imageUser==""?imga:user.imageUser} alt={user.imageUser==""?imga:user.imageUser} />
               </div>
               <div>
                 <h3>{user.nameUser}</h3>

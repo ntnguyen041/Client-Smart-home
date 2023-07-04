@@ -9,7 +9,6 @@ import { AppProvider } from './style/context/AppContext';
 import Register from './Components/Register/Register';
 import RoomPage from './Components/Body Section/Room/RoomPage';
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -17,7 +16,6 @@ function App() {
         <Routes>
           <Route path="/Login" element={<Login />} />
           <Route path="signup" element={<Register />} />
-
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="Seting" element={<Seting />} />

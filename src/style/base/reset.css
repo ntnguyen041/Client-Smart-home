@@ -1,5 +1,5 @@
 /*  */
-body {
+.layout {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,7 +417,7 @@ img {
   }
 }
 @media only screen and (max-width: 745px) {
-  body {
+  .layout {
     display: block;
     padding: 0;
   }
@@ -471,5 +471,11 @@ img {
   }
   .mainContent {
     padding: 0;
+  }
+  .container-listuser {
+    width: 100%;
+  }
+  #namehome {
+    margin-right: none;
   }
 }/*# sourceMappingURL=reset.css.map */

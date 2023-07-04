@@ -4,7 +4,7 @@ import socket from '../../../socket/socket';
 import "./Rooms.css"
 import { NavLink } from 'react-router-dom';
 import RoomPage from './RoomPage';
-
+ 
 
 const listRoominitstate = {
     loading: false,
@@ -35,11 +35,10 @@ const listRoomReducer = (state, action) => {
         default:
     }
 }
-
-
-
+ 
 export default function Rooms() {
-    const [user] = useState(JSON.parse(localStorage.getItem("accessToKen")));
+
+    const homeId = JSON.parse(localStorage.getItem("accessToKenHome"));
     const [listRoom, listRoomdispatch] = useReducer(listRoomReducer, listRoominitstate)
     useEffect(() => {
         async function lisromm() {
@@ -47,7 +46,7 @@ export default function Rooms() {
                 type: 'GET_ROOM_API'
             });
             try {
-                socket.emit("getitemhome", user.homeId[0])
+                socket.emit("getitemhome", homeId)
                 socket.on("listRoom", list => {
                     listRoomdispatch({
                         type: 'GET_ROOM_SUCCESS',
@@ -68,6 +67,7 @@ export default function Rooms() {
     
     return (
         <div className="RomContainer">
+            
             {listRoom.loading ? "" :
                 listRoom.data.map((Room) =>
                     <div key={Room._id} className="singleItem flex">
@@ -77,9 +77,11 @@ export default function Rooms() {
                                 <img src={Room.imageRoom} alt={Room.imageRoom} />
                             </div>
                         </NavLink>
+                        
                     </div>
                 )
             }
+               <h1>You can add room from smarthome app</h1>
         </div>
     )
 }

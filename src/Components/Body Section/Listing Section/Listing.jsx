@@ -5,22 +5,21 @@ import './Listing.css'
 import Chart from 'chart.js/auto';
 import { BsArrowRightShort } from 'react-icons/bs'
 import socket from "../../../socket/socket";
- 
+
 
 
 const Listing = () => {
   const so = 20;
-  const [user,setUser]=useState(JSON.parse(localStorage.getItem("accessToKen")));
+  const homeId=JSON.parse(localStorage.getItem("accessToKenHome"));
   const [listRoom,setListRoom] =useState("");
   useEffect(() => {
-    if(user!==null){
-        socket.emit("getitemhome",user.homeId[0])
+    if(homeId!==null){
+        socket.emit("getitemhome",homeId)
         socket.on("listRoom",data=>{
             setListRoom(data)
-        })
-        // console.log();
+        }) // console.log();
     }
-  }, [user]);
+  }, [homeId]);
  
   return (
     <div className="LisitingSection ">
@@ -35,10 +34,10 @@ const Listing = () => {
       <div className="secContainer flex">
         {listRoom ?
           listRoom.map((Room) =>
-          <div key={Room._id} className="singleItem">
+          <NavLink to={"Room/"+Room._id} key={Room._id} className="singleItem">
             <img src={Room.imageRoom} alt={Room.imageRoom} />
             <h3>{Room.nameRoom}</h3>
-          </div>
+          </NavLink>
         )
           : ""}
       </div>

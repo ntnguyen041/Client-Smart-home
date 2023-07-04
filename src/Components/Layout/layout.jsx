@@ -1,38 +1,39 @@
-import React, { useState, useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Sidebar from "../SideBar Section/Sidebar";
 import '../../style/base/reset.css';
 import { AppContext } from "../../style/context/AppContext";
-import { Navigate, Outlet, useNavigate} from "react-router-dom";
- 
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 
-const Layout = ({users}) => {
+
+const Layout = ({ users }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(localStorage.getItem("accessToKen"));
     const { themeStyle } = useContext(AppContext);
     useEffect(() => {
-        const user =localStorage.getItem("accessToKen");
+        const user = localStorage.getItem("accessToKen");
         if (!user) {
             navigate("/Login")
         }
     }, [user]);
     if (!user) {
-        document.body.style.background = "url('')";
         <Navigate replace to="/Login" />
     } else {
         return (
-           
-            <div className="container">
-               <div className={themeStyle}>
+            <div className="layout">
                 <div className="container">
-                    <Sidebar />
-                    <div className="mainContent">
-                        <Outlet />
-                     </div>
-                 </div>
-             </div> 
+                    <div className={themeStyle}>
+                        <div className="container">
+                            <Sidebar />
+                            <div className="mainContent">
+                                <Outlet />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-           
+
+
         )
     }
 }

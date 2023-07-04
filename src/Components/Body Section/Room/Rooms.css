@@ -1,6 +1,7 @@
 /*  */
 .RomContainer {
   gap: 1rem;
+  text-align: center;
   flex-direction: column;
   align-items: center;
   display: flex;

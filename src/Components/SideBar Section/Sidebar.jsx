@@ -13,7 +13,6 @@ const Sidebar =()=>{
     const Logoutuser=()=>{
         localStorage.clear();
         navigate("/Login")
-        console.log("thoat")
     }
 
     return(
