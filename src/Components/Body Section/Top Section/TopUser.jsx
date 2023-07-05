@@ -28,8 +28,7 @@ const TopUser = () => {
         }, 1000);
     }, []);
   
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("accessToKen")));
-    const { listUser } = useContext(AppContext);
+    const user= JSON.parse(localStorage.getItem("accessToKen"));
 
     if (user === null) {
         <div className="topSection">
