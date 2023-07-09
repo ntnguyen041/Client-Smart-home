@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { useEffect, useState,useRef } from 'react';
 import {useNavigate,Navigate } from "react-router-dom";
 import "./Login.css"
-import {io} from "socket.io-client";
+
 import { NavLink} from "react-router-dom";
 import {authentication } from "../../firebase-otp";
 import {RecaptchaVerifier ,signInWithPhoneNumber } from "firebase/auth";
 import { AppContext } from "../../style/context/AppContext";
-const socket = io.connect('http://localhost:3001', {reconnect: true});
+import socket from "../../socket/socket";
 
 const Login=()=>{
     const {setUserlogin}= useContext(AppContext);
