@@ -196,26 +196,28 @@ export const AppProvider = ({children})=>{
 
       const [listRoom, listRoomdispatch] = useReducer(listRoomReducer, listRoominitstate)
       useEffect(() => {
-          async function lisromm() {
-              listRoomdispatch({
-                  type: 'GET_ROOM_API'
-              });
-              try {
-                  socket.emit("getitemhome", homeId)
-                  socket.on("listRoom", list => {
-                      listRoomdispatch({
-                          type: 'GET_ROOM_SUCCESS',
-                          data: list
-                          
-                      });
-                  })
-              } catch (errr) {
-                  listRoomdispatch({
-                      type: 'GET_ROOM_ERR'
-                  });
-              }
-          }
-          lisromm();
+        if(homeId!==null){
+
+            async function lisromm() {
+                listRoomdispatch({
+                    type: 'GET_ROOM_API'
+                });
+                try {
+                    socket.emit("getitemhome", homeId)
+                    socket.on("listRoom", list => {
+                        listRoomdispatch({
+                            type: 'GET_ROOM_SUCCESS',
+                            data: list
+                        });
+                    })
+                } catch (errr) {
+                    listRoomdispatch({
+                        type: 'GET_ROOM_ERR'
+                    });
+                }
+            }
+            lisromm();
+        }
       }, [homeId])
 
       const [lists, listDevcedD] = useReducer(listDeviceRD, listDeviceinitstate)
