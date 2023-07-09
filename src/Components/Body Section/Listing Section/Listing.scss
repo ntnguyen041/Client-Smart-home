@@ -26,15 +26,15 @@
 
         .singleItem{
             position: relative;
-            width: 150px;
-            height: 170px;
+            width: 140px;
+            height: 150px;
             display: flex;
             align-items: center;
             flex-direction: column;
             padding: 1rem;
             border-radius: 10px;
             background: st.$itemCardColor;
-
+           
             &:hover{
                 background: st.$itemCardHome;
                 box-shadow: 0 2px 2px st.$inputColor ;
@@ -50,6 +50,11 @@
                 font-size: st.$h3FontSize;
                 color: st.$blaclColor;
                 padding: 1rem 0;
+            }
+            img{
+                width: 100%;
+                height: 75px;
+                object-fit: cover;
             }
         }
         

@@ -172,6 +172,11 @@
         box-shadow: 0 2px 2px st.$inputColor ;
     }
     }
+    .QRContainer{
+      .Qrcheckicon{
+       background:st.$itemCardColor;
+      }
+   }
     }
 
 
@@ -235,7 +240,6 @@
   
           }
       }
-  
       .cardSection{
           .rightCard{
               h1{
@@ -594,5 +598,10 @@
   }
   #namehome{
     margin-right: none;
+}
+.QRContainer{
+  justify-content: center;
+  
+  
 }
 }

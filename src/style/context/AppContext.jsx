@@ -1,44 +1,297 @@
-import {createContext, useState,useEffect} from "react";
-// import { io } from "socket.io-client";
-//const socket = io.connect(['http://localhost:3001','https://server-smart-home.onrender.com'], { reconnect: true });
-// const socket = io.connect('http://localhost:3001', { reconnect: true });
+import {createContext, useState,useEffect, useReducer} from "react";
 import socket from "../../socket/socket";
 export const AppContext =createContext();
 
+
+const listhomeinitstate = {
+    loading: false,
+    data: [],
+    error: null
+}
+const listhomeReduduces = (state, action) => {
+    switch (action.type) {
+        case 'GET':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'OK':
+            return {
+                ...state,
+                loading: false,
+                data: action.data,
+            }
+        case 'ER':
+            return {
+                ...state,
+                data: [],
+                error: action.data
+            }
+        default:
+    }
+}
+
+
+const usersinitstate={
+    loading:false,
+    data:[],
+    error:null
+  }
+  const usersReducer=(state,action)=>{
+    switch(action.type){
+      case 'GET_SOCKET_API':
+        return{
+          ...state,
+          loading:true
+        }
+      case 'GET_SOCKET_SUCCESS':
+        return{
+          ...state,
+          loading:false,
+          data:action.data
+        }
+      case 'GET_SOCKET_ERR':
+        return{
+          ...state,
+          data:[],
+          error:action.data
+        }
+      default:
+    }
+  }
+
+  const listRoominitstate = {
+    loading: false,
+    data: [],
+    error: null
+}
+
+
+const listRoomReducer = (state, action) => {
+    switch (action.type) {
+        case 'GET_ROOM_API':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'GET_ROOM_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                data: action.data
+            }
+        case 'GET_ROOM_ERR':
+            return {
+                ...state,
+                data: [],
+                error: action.data
+            }
+        default:
+    }
+}
+const listDeviceinitstate = {
+    loading: false,
+    data: [],
+    error: null
+  }
+  const listDeviceRD = (state, action) => {
+    switch (action.type) {
+        case 'GET_API':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'GET_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                data: action.data,
+  
+            }
+        case 'GET_ERR':
+            return {
+                ...state,
+                data: [],
+  
+                error: action.data
+            }
+        default:
+    }
+  }
+
+
+
+
+  
 export const AppProvider = ({children})=>{
-    const [user,setUser]=useState(JSON.parse(localStorage.getItem("accessToKen")));
-    const [listUser,setListUser] =useState([]);
-    const [listRoom,setListRoom] =useState([]);
+    const [user,setUserlogin]=useState(JSON.parse(localStorage.getItem("accessToKen")));
+    const [listhome, listhomedispatch] = useReducer(listhomeReduduces, listhomeinitstate);
+    
+    
+    const [users,usersdispatch]=useReducer(usersReducer,usersinitstate)
+    const [homeId,sethomeid]=useState(JSON.parse(localStorage.getItem("accessToKenHome")));
+
     useEffect(() => {
         if(user!==null){
             const id = user._id;
             socket.emit("joinRoom",  user._id);
-            ////// lay lai du lieu user
-            // socket.emit("getOneUser",id)
-            // socket.on("getUser",(data)=>{
-            //     setUser(data)
-            // })
-            // lay toan bo user
-            // socket.emit("getAllUser", id);
-            // socket.on('listUserView', (data) => {
-            //     setListUser(data)
-            // })
-
-            // console.log();
         }
-      }, [user]);
-      
+    }, [user]);
     const [isDay,setIsDay]=useState(true);
     const themeStyle ={
         light:'light',
         night:'night'
     }
+
+
+
+    useEffect(() => {
+        async function loadname() {
+            listhomedispatch({
+                type: 'GET'
+            });
+            try {
+                socket.emit("getHomeUser", { _id: user._id, homeId: user.homeId })
+                socket.on("listHomeUser", list => {
+                    listhomedispatch({
+                        type: 'OK',
+                        data: list,
+                    });
+                })
+            } catch (error) {
+                listhomedispatch({
+                    type: 'ER'
+                });
+            }
+
+        }
+        loadname();
+    }, [])
+
+    useEffect(() => {
+        async function loaduserRom() {
+          setTimeout(()=>{
+            try {
+              // lay toan bo user
+              socket.emit("getAllUser", { uid: user.uid, homeId: homeId });
+              socket.on('listUserView', (users) => {
+                usersdispatch({
+                  type:'GET_SOCKET_SUCCESS',
+                  data:users
+                });
+              })
+            } catch (error) {
+              usersdispatch({
+                type:'GET_SOCKET_ERR',
+              });
+            }
+          },100)
+          usersdispatch({
+            type:'GET_SOCKET_API'
+          });
+         
+        }
+        loaduserRom();
+      },[homeId]);
+
+      const [listRoom, listRoomdispatch] = useReducer(listRoomReducer, listRoominitstate)
+      useEffect(() => {
+          async function lisromm() {
+              listRoomdispatch({
+                  type: 'GET_ROOM_API'
+              });
+              try {
+                  socket.emit("getitemhome", homeId)
+                  socket.on("listRoom", list => {
+                      listRoomdispatch({
+                          type: 'GET_ROOM_SUCCESS',
+                          data: list
+                          
+                      });
+                  })
+              } catch (errr) {
+                  listRoomdispatch({
+                      type: 'GET_ROOM_ERR'
+                  });
+              }
+          }
+          lisromm();
+      }, [homeId])
+
+      const [lists, listDevcedD] = useReducer(listDeviceRD, listDeviceinitstate)
+      useEffect(() => {
+        async function lisdevice() {
+          listDevcedD({
+                type: 'GET_API'
+            });
+            setTimeout(() => {
+                try {
+                    socket.emit("getDevicesToHome", { _id: user._id, homeId: homeId})
+                    socket.on("getListforHome", list => {
+                      listDevcedD({
+                            type: 'GET_SUCCESS',
+                            data: list,
+                        });
+                    })
+                } catch (errr) {
+                  listDevcedD({
+                        type: 'GET_ERR'
+                    });
+                }
+            }, 300)
+    
+        }
+        lisdevice();
+    }, [homeId])
+
+    const valueADD = [
+        {
+            homeId:homeId,nameDevice: "Light", iconName: "lightbulb", pinEsp: 2
+        },
+        {
+            homeId:homeId,nameDevice: "Light", iconName: "lightbulb", pinEsp: 3
+        },
+        {
+            homeId:homeId,nameDevice: "Light", iconName: "lightbulb", pinEsp: 12
+        },
+        {
+            homeId:homeId,nameDevice: "Fence Gate", iconName: "door-open", pinEsp: 8
+        },
+        {
+            homeId:homeId,nameDevice: "Door Gara", iconName: "door-open", pinEsp: 7
+        }
+    ]
+
+    ////chart
+    const [chart,setchart]=useState([])
+  useEffect(() => {
+    setInterval(() => {
+            try {
+                socket.emit("getDevicesToHome", { _id: user._id, homeId: JSON.parse(localStorage.getItem("accessToKenHome"))})
+                socket.on("getListforHome", list => {
+                   setchart(list)
+                })
+            } catch (errr) {
+               
+            }
+
+    }, 5000);
+}, [homeId])
+
     return (
         <AppContext.Provider value={{
             isDay,
             setIsDay,
             themeStyle:themeStyle[isDay?'night':'light'],
             user,
+            listhome:listhome,
+            sethomeid,
+            homeId,
+            listRoom,
+            lists,
+            valueADD,
+            setUserlogin,
+            chart
             }}>
         {children}
         </AppContext.Provider>

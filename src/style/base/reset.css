@@ -125,6 +125,9 @@
   background: hsl(120, 27%, 87%);
   box-shadow: 0 2px 2px hsl(330, 12%, 97%);
 }
+.light .QRContainer .Qrcheckicon {
+  background: hsl(120, 5%, 88%);
+}
 
 .night .container {
   background: hsl(240, 2%, 12%);
@@ -477,5 +480,8 @@ img {
   }
   #namehome {
     margin-right: none;
+  }
+  .QRContainer {
+    justify-content: center;
   }
 }/*# sourceMappingURL=reset.css.map */

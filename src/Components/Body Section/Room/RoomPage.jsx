@@ -4,8 +4,8 @@ import { NavLink, json, useLocation, } from 'react-router-dom'
 import { useReducer, useEffect, useState } from 'react'
 import socket from '../../../socket/socket'
 import MUIDataTable from "mui-datatables";
-
-const columns = ["nameDevice", "iconName", "pinEsp", "status","consumes","countOn","timeOn","timeOff","dayRunning","dayRunningStatus"];
+import "./RoomPage.css"
+const columns = ["nameDevice", "pinEsp", "status","consumes","countOn","timeOn","timeOff","dayRunning","dayRunningStatus"];
 
 const options = {
     filterType: 'checkbox',
@@ -53,7 +53,6 @@ export default function RoomPage() {
                 try {
                     socket.emit("getDevices", { _id: user._id, roomId: Roomid.pathname.slice(6) })
                     socket.on("listDevices", list => {
-                        console.log(list)
                         listDevcedispatch({
                             type: 'GET_SUCCESS',
                             data: list,

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink,Link, useNavigate, Navigate } from "react-router-dom";
 import './Sidebar.css'
 import logo from '../../Aseets/logo.png'
 import {AiFillHome} from 'react-icons/ai'
 import {HiOutlineViewGrid} from 'react-icons/hi'
-import {RiRemoteControlLine} from 'react-icons/ri'
+import {AiOutlineQrcode} from 'react-icons/ai'
 import {AiFillSetting} from 'react-icons/ai'
 import {SlLogout} from 'react-icons/sl'
 import Darkmode from "../Body Section/Top Section/darkmode";
@@ -14,7 +14,11 @@ const Sidebar =()=>{
         localStorage.clear();
         navigate("/Login")
     }
-
+    useEffect(() => {
+        if (localStorage.getItem("accessToKen")===null) {
+            navigate("/Login")
+        }
+    });
     return(
         <div className="sideBar">
                 <NavLink to="/">
@@ -48,19 +52,14 @@ const Sidebar =()=>{
                         
                         <li className="listItem">
                         <NavLink to="/Driver" className={"menuLink flex"}>
-                                <RiRemoteControlLine className="icon"/>
+                                <AiOutlineQrcode className="icon"/>
                                 <span className="smailText">
-                                    Driver Controll
+                                    Device Qr
                                 </span>
                         </NavLink>
                         </li>
                         <li className="listItem">
-                        <NavLink to="/Seting" className={"menuLink flex"}>
-                                <AiFillSetting className="icon"/>
-                                <span className="smailText">
-                                    Settings
-                                </span>
-                        </NavLink>
+                        
                         </li>
                     <br />
                     <br />

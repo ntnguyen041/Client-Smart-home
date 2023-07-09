@@ -1,10 +1,11 @@
 
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useContext } from "react";
 import './Top.css'
 import img2 from '../../../Aseets/home.png'
 import video from '../../../Aseets/video/video.mp4'
 import socket from '../../../socket/socket';
 import { Navigate } from "react-router-dom";
+import { AppContext } from "../../../style/context/AppContext";
 
 const listhomeinitstate = {
     loading: false,
@@ -35,38 +36,39 @@ const listhomeReduduces = (state, action) => {
 }
 
 const TopContent = () => {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("accessToKen")));
-    const [listhome, listhomedispatch] = useReducer(listhomeReduduces, listhomeinitstate)
-    const [homec,sethome]=useState(JSON.parse(localStorage.getItem("accessToKenHome")));
-    useEffect(() => {
-        async function loadname() {
-            listhomedispatch({
-                type: 'GET'
-            });
-            try {
-                socket.emit("getHomeUser", { _id: user._id, homeId: user.homeId })
-                socket.on("listHomeUser", list => {
-                    listhomedispatch({
-                        type: 'OK',
-                        data: list,
-                    });
-                })
-            } catch (error) {
-                listhomedispatch({
-                    type: 'ER'
-                });
-            }
+    const {sethomeid}=useContext(AppContext);
+    const user = JSON.parse(localStorage.getItem("accessToKen"));
+    //const [listhome, listhomedispatch] = useReducer(listhomeReduduces, listhomeinitstate)
+    const homec = JSON.parse(localStorage.getItem("accessToKenHome"));
+    // useEffect(() => {
+    //     async function loadname() {
+    //         listhomedispatch({
+    //             type: 'GET'
+    //         });
+    //         try {
+    //             socket.emit("getHomeUser", { _id: user._id, homeId: user.homeId })
+    //             socket.on("listHomeUser", list => {
+    //                 listhomedispatch({
+    //                     type: 'OK',
+    //                     data: list,
+    //                 });
+    //             })
+    //         } catch (error) {
+    //             listhomedispatch({
+    //                 type: 'ER'
+    //             });
+    //         }
 
-        }
-        loadname();
-    }, [])
-    
-    function checkhome(newhome){
-        sethome(newhome);
+    //     }
+    //     loadname();
+    // }, [])
+    const {listhome} =useContext(AppContext)
+    function checkhome(newhome) {
         localStorage.setItem("accessToKenHome", JSON.stringify(newhome))
-        window.location.reload(true);
+        sethomeid(newhome);
+       // window.location.reload(true);
     }
-    
+
     return (
         <div>
             <div className="topSection">
@@ -77,15 +79,13 @@ const TopContent = () => {
                         <p>Smart home system will serve you anytime, anywhere</p>
 
                         <div className="buttons flex">
-                                {listhome.loading ? "" :
-                            <select name="namehome" id="namehome" className="btn" value={homec} onChange={(event)=>{
-                                checkhome(event.target.value)
-                            }}>
-                                  {listhome.data.map((home) => (
-                                        <option ch  key={home._id} value={home._id}>{home.nameHome}</option>
-                                    ))  }
-                            </select>
-                                }
+                            {listhome.loading ? "" :
+                                <select name="namehome" id="namehome" className="btn" value={homec} onChange={(event) => {checkhome(event.target.value)}}>
+                                    {listhome.data.map((home) => (
+                                        <option key={home._id} value={home._id}>{home.nameHome}</option>
+                                    ))}
+                                </select>
+                            }
                             <button className="btn"> IOS </button>
                             <button className="btn transparent">Android</button>
                         </div>
