@@ -263,7 +263,7 @@ export const AppProvider = ({children})=>{
             homeId:homeId,nameDevice: "Door Gara", iconName: "door-open", pinEsp: 7
         },
         {
-            homeId:homeId,nameDevice: "Mani Door", iconName: "main-door", pinEsp: 4
+            homeId:homeId,nameDevice: "Main Door", iconName: "main-door", pinEsp: 4
         },
         {
             homeId:homeId,nameDevice: "Fan", iconName: "fan", pinEsp: 15
