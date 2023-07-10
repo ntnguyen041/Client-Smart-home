@@ -34,15 +34,14 @@ const Login=()=>{
             if(data!==null){
                     setUser(data);
                     setUserlogin(data)
-                    setExpandForm(true);
                     generrateRecapcha();
-                    let appVerifier = window.recaptchaVerifier;
-                    signInWithPhoneNumber(authentication,phoneNumber,appVerifier)
-                    .then(confirmationResult=>{
-                        window.confirmationResult = confirmationResult;
+                    signInWithPhoneNumber(authentication,phoneNumber,window.recaptchaVerifier)
+                    .then(Result=>{
+                        window.confirmationResult = Result;
+                        setExpandForm(true);
                     }).catch((error)=>{
-                        alert("Your account will be locked in a few hours")
-                    })
+                        console.log(error)
+                })
             }
         })
     }
@@ -71,7 +70,7 @@ const Login=()=>{
    }else{
     return(
         <div className="backgoundbody">
-            <h1 className="slg">Samrt Home INIFITI</h1>
+            <h1 className="slg">Samrt Home Inifinity</h1>
         <section className="loginContainer">
          <form onSubmit={reqestOTP}>
              <h1>Sign in</h1>

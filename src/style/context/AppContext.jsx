@@ -130,6 +130,34 @@ export const AppProvider = ({children})=>{
     
     const [users,usersdispatch]=useReducer(usersReducer,usersinitstate)
     const [homeId,sethomeid]=useState(JSON.parse(localStorage.getItem("accessToKenHome")));
+    const [listRoom, listRoomdispatch] = useReducer(listRoomReducer, listRoominitstate)
+    const [lists, listDevcedD] = useReducer(listDeviceRD, listDeviceinitstate)
+    const valueADD = [
+        {
+            homeId:homeId,nameDevice: "Light", iconName: "lightbulb", pinEsp: 2
+        },
+        {
+            homeId:homeId,nameDevice: "Light", iconName: "lightbulb", pinEsp: 3
+        },
+        {
+            homeId:homeId,nameDevice: "Light", iconName: "lightbulb", pinEsp: 12
+        },
+        {
+            homeId:homeId,nameDevice: "Fence Gate", iconName: "door-open", pinEsp: 8
+        },
+        {
+            homeId:homeId,nameDevice: "Door Gara", iconName: "door-open", pinEsp: 7
+        },
+        {
+            homeId:homeId,nameDevice: "Main Door", iconName: "door-open", pinEsp: 4
+        },
+        {
+            homeId:homeId,nameDevice: "Fan", iconName: "fan", pinEsp: 15
+        }
+    ]
+
+    ////chart
+    const [chart,setchart]=useState([])
 
     useEffect(() => {
         if(user!==null){
@@ -189,12 +217,11 @@ export const AppProvider = ({children})=>{
           usersdispatch({
             type:'GET_SOCKET_API'
           });
-         
         }
         loaduserRom();
       },[homeId]);
 
-      const [listRoom, listRoomdispatch] = useReducer(listRoomReducer, listRoominitstate)
+    
       useEffect(() => {
         if(homeId!==null){
 
@@ -220,7 +247,7 @@ export const AppProvider = ({children})=>{
         }
       }, [homeId])
 
-      const [lists, listDevcedD] = useReducer(listDeviceRD, listDeviceinitstate)
+ 
       useEffect(() => {
         async function lisdevice() {
           listDevcedD({
@@ -228,7 +255,7 @@ export const AppProvider = ({children})=>{
             });
             setTimeout(() => {
                 try {
-                    socket.emit("getDevicesToHome", { _id: user._id, homeId: homeId})
+                    socket.emit("getDevicesToHome", { _id: user._id, homeId: JSON.parse(localStorage.getItem("accessToKenHome"))})
                     socket.on("getListforHome", list => {
                       listDevcedD({
                             type: 'GET_SUCCESS',
@@ -246,32 +273,7 @@ export const AppProvider = ({children})=>{
         lisdevice();
     }, [homeId])
 
-    const valueADD = [
-        {
-            homeId:homeId,nameDevice: "Light", iconName: "lightbulb", pinEsp: 2
-        },
-        {
-            homeId:homeId,nameDevice: "Light", iconName: "lightbulb", pinEsp: 3
-        },
-        {
-            homeId:homeId,nameDevice: "Light", iconName: "lightbulb", pinEsp: 12
-        },
-        {
-            homeId:homeId,nameDevice: "Fence Gate", iconName: "door-open", pinEsp: 8
-        },
-        {
-            homeId:homeId,nameDevice: "Door Gara", iconName: "door-open", pinEsp: 7
-        },
-        {
-            homeId:homeId,nameDevice: "Main Door", iconName: "door-open", pinEsp: 4
-        },
-        {
-            homeId:homeId,nameDevice: "Fan", iconName: "fan", pinEsp: 15
-        }
-    ]
 
-    ////chart
-    const [chart,setchart]=useState([])
   useEffect(() => {
     setInterval(() => {
             try {
