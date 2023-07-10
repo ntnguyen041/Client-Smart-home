@@ -283,7 +283,7 @@ export const AppProvider = ({children})=>{
                
             }
 
-    }, 5000);
+    }, 100);
 }, [homeId])
 
     return (
