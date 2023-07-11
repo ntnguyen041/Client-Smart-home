@@ -8,7 +8,7 @@ import {authentication } from "../../firebase-otp";
 import {RecaptchaVerifier ,signInWithPhoneNumber } from "firebase/auth";
 import { AppContext } from "../../style/context/AppContext";
 import socket from "../../socket/socket";
-const verifier =window.recaptchaVerifier;
+
 const Login=()=>{
     const {setUserlogin}= useContext(AppContext);
     const navigate = useNavigate();
@@ -35,14 +35,13 @@ const Login=()=>{
                     setUser(data);
                     setUserlogin(data)
                     generrateRecapcha();
-
-                    signInWithPhoneNumber(phoneNumber,verifier)
+                    signInWithPhoneNumber(authentication,phoneNumber,window.recaptchaVerifier)
                     .then(Result=>{
                         window.confirmationResult = Result;
                         setExpandForm(true);
                     }).catch((error)=>{
-                        console.log(error)
-                })
+                        alert("Your account will be locked in a few hours")
+                    })
             }
         })
     }
