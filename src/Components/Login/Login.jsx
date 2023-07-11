@@ -35,7 +35,7 @@ const Login=()=>{
                     setUser(data);
                     setUserlogin(data)
                     generrateRecapcha();
-                    signInWithPhoneNumber(authentication,phoneNumber,window.recaptchaVerifier)
+                    signInWithPhoneNumber(phoneNumber,window.recaptchaVerifier)
                     .then(Result=>{
                         window.confirmationResult = Result;
                         setExpandForm(true);
