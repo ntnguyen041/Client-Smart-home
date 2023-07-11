@@ -4,6 +4,7 @@ import './darkmode.css'
 const Darkmode =()=>{
     const {setIsDay,isDay}=useContext(AppContext);
     const toggoleTheme =()=>{
+        localStorage.setItem("setiday","true")
         setIsDay(!isDay)
     }
     return(

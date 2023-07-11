@@ -20,16 +20,27 @@ const date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFul
 
 const TopUser = () => {
     const [timeString, setTimeString] = useState('');
+    const {setIsDay} = useContext(AppContext);
     useEffect(() => {
         setInterval(() => {
             const now = new Date();
             const newTimeS = formatDate(now);
             setTimeString(newTimeS);
+            // console.log(parseInt(newTimeS))
+            setday(parseInt(newTimeS))
         }, 1000);
     }, []);
-  
+   
     const user= JSON.parse(localStorage.getItem("accessToKen"));
-
+    function setday(a){
+        if(localStorage.getItem("setiday")!=="true"){
+            if(a>5&&a<18){
+                setIsDay(false)
+            }else{
+                setIsDay(true)
+            }}
+        }
+    
     if (user === null) {
         <div className="topSection">
         </div>
@@ -59,7 +70,6 @@ const TopUser = () => {
             </div>
         )
     }
-
 }
 
 export default TopUser

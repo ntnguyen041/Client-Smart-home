@@ -6,7 +6,7 @@ import Driver from './Components/Body Section/pages/Driver';
 import Layout from './Components/Layout/layout';
 import Login from './Components/Login/Login';
 import { AppProvider } from './style/context/AppContext';
-import Register from './Components/Register/Register';
+
 import RoomPage from './Components/Body Section/Room/RoomPage';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <AppProvider>
         <Routes>
           <Route path="/Login" element={<Login />} />
-          <Route path="signup" element={<Register />} />
+        
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="Seting" element={<Seting />} />

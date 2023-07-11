@@ -36,33 +36,10 @@ const listhomeReduduces = (state, action) => {
 }
 
 const TopContent = () => {
-    const {sethomeid}=useContext(AppContext);
-    const user = JSON.parse(localStorage.getItem("accessToKen"));
-    //const [listhome, listhomedispatch] = useReducer(listhomeReduduces, listhomeinitstate)
-    const homec = JSON.parse(localStorage.getItem("accessToKenHome"));
-    // useEffect(() => {
-    //     async function loadname() {
-    //         listhomedispatch({
-    //             type: 'GET'
-    //         });
-    //         try {
-    //             socket.emit("getHomeUser", { _id: user._id, homeId: user.homeId })
-    //             socket.on("listHomeUser", list => {
-    //                 listhomedispatch({
-    //                     type: 'OK',
-    //                     data: list,
-    //                 });
-    //             })
-    //         } catch (error) {
-    //             listhomedispatch({
-    //                 type: 'ER'
-    //             });
-    //         }
+    const {sethomeid,listhome}=useContext(AppContext);
 
-    //     }
-    //     loadname();
-    // }, [])
-    const {listhome} =useContext(AppContext)
+    const homec = JSON.parse(localStorage.getItem("accessToKenHome"));
+
     function checkhome(newhome) {
         localStorage.setItem("accessToKenHome", JSON.stringify(newhome))
         sethomeid(newhome);
@@ -75,7 +52,7 @@ const TopContent = () => {
 
                 <div className="cardSection flex">
                     <div className="rightCard flex">
-                        <h1>Install and Control your home information</h1>
+                        <h1>Control your home information</h1>
                         <p>Smart home system will serve you anytime, anywhere</p>
 
                         <div className="buttons flex">
@@ -86,8 +63,7 @@ const TopContent = () => {
                                     ))}
                                 </select>
                             }
-                            <button className="btn"> IOS </button>
-                            <button className="btn transparent">Android</button>
+                        
                         </div>
 
                         <div className="videoDiv">

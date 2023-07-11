@@ -5,7 +5,7 @@ import {useReducer,useEffect} from "react"
 import socket from '../../../socket/socket';
 import { AppContext } from '../../../style/context/AppContext';
 
-const columns = ["roomName","nameDevice", "pinEsp", "status","consumes","countOn","timeOn","timeOff","dayRunning","dayRunningStatus"];
+const columns = ["roomName","nameDevice", "pinEsp", "status","consumes","countOn","timeOn","timeOff","dayRunning"];
 
 const options = {
   filterType: 'checkbox',

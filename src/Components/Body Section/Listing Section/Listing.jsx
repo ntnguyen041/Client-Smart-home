@@ -42,13 +42,13 @@ const Listing = () => {
             labels: lists.loading ? "Loading" : lists.data.map((Device) => Device.nameDevice),
             datasets: [
               {
-                data: lists.loading ? "Loading" : chart.map((Device) => Device.countOn),
+                data: chart.loading ? "Loading" : chart.map((Device) => Device.countOn),
                 label: "Count on",
                 borderColor: "#3e95cd",
                 fill: false
               },
               {
-                data: lists.loading ? "Loading" : chart.map((Device) => Device.consumes),
+                data: chart.loading ? "Loading" : chart.map((Device) => Device.consumes),
                 label: "Consume",
                 borderColor: "#FFD700",
                 fill: false

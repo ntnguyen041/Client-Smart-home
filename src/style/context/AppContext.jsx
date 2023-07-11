@@ -155,7 +155,13 @@ export const AppProvider = ({children})=>{
             homeId:homeId,nameDevice: "Fan", iconName: "fan", pinEsp: 15
         }
     ]
-
+ 
+ 
+    const [isDay,setIsDay]=useState(false);
+    const themeStyle ={
+        light:'light',
+        night:'night'
+    }
     ////chart
     const [chart,setchart]=useState([])
 
@@ -165,11 +171,8 @@ export const AppProvider = ({children})=>{
             socket.emit("joinRoom",  user._id);
         }
     }, [user]);
-    const [isDay,setIsDay]=useState(true);
-    const themeStyle ={
-        light:'light',
-        night:'night'
-    }
+ 
+
 
 
 
@@ -194,7 +197,7 @@ export const AppProvider = ({children})=>{
 
         }
         loadname();
-    }, [])
+    }, [homeId])
 
     useEffect(() => {
         async function loaduserRom() {
@@ -279,13 +282,13 @@ export const AppProvider = ({children})=>{
             try {
                 socket.emit("getDevicesToHome", { _id: user._id, homeId: JSON.parse(localStorage.getItem("accessToKenHome"))})
                 socket.on("getListforHome", list => {
-                   setchart(list)
+                    setchart(list)
                 })
             } catch (errr) {
                
             }
 
-    }, 100);
+    }, 2000);
 }, [homeId])
 
     return (
