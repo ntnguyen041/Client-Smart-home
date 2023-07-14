@@ -181,23 +181,26 @@ export const AppProvider = ({children})=>{
             listhomedispatch({
                 type: 'GET'
             });
-            try {
-                socket.emit("getHomeUser", { _id: user._id, homeId: user.homeId })
-                socket.on("listHomeUser", list => {
+            setTimeout(() => {
+                try {
+                    socket.emit("getHomeUser", { _id: user._id, homeId: user.homeId })
+                    socket.on("listHomeUser", list => {
+                        listhomedispatch({
+                            type: 'OK',
+                            data: list,
+                        });
+                    })
+                } catch (error) {
                     listhomedispatch({
-                        type: 'OK',
-                        data: list,
+                        type: 'ER'
                     });
-                })
-            } catch (error) {
-                listhomedispatch({
-                    type: 'ER'
-                });
-            }
+                }
+            }, 300);
+            
 
         }
         loadname();
-    }, [homeId])
+    }, [])
 
     useEffect(() => {
         async function loaduserRom() {

@@ -56,7 +56,7 @@ const TopContent = () => {
                         <p>Smart home system will serve you anytime, anywhere</p>
 
                         <div className="buttons flex">
-                            {listhome.loading ? "" :
+                            {listhome.loading ? "loading" :
                                 <select name="namehome" id="namehome" className="btn" value={homec} onChange={(event) => {checkhome(event.target.value)}}>
                                     {listhome.data.map((home) => (
                                         <option key={home._id} value={home._id}>{home.nameHome}</option>
