@@ -36,15 +36,38 @@ const listhomeReduduces = (state, action) => {
 }
 
 const TopContent = () => {
-    const {sethomeid,listhome}=useContext(AppContext);
+    const {sethomeid}=useContext(AppContext);
 
     const homec = JSON.parse(localStorage.getItem("accessToKenHome"));
-
+    const [listhome, listhomedispatch] = useReducer(listhomeReduduces, listhomeinitstate);
     function checkhome(newhome) {
         localStorage.setItem("accessToKenHome", JSON.stringify(newhome))
         sethomeid(newhome);
        // window.location.reload(true);
     }
+    useEffect(() => {
+        async function loadname() {
+            listhomedispatch({
+                type: 'GET'
+            });
+            setTimeout(() => {
+                try {
+                    socket.emit("getHomeUser", { _id: user._id, homeId: user.homeId })
+                    socket.on("listHomeUser", list => {
+                        listhomedispatch({
+                            type: 'OK',
+                            data: list,
+                        });
+                    })
+                } catch (error) {
+                    listhomedispatch({
+                        type: 'ER'
+                    });
+                }
+            }, 300);
+        }
+        loadname();
+    }, [])
 
     return (
         <div>

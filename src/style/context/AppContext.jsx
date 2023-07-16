@@ -229,7 +229,7 @@ export const AppProvider = ({children})=>{
 
     
       useEffect(() => {
-        if(homeId!==null){
+        // if(homeId!==null){
 
             async function lisromm() {
                 listRoomdispatch({
@@ -250,7 +250,7 @@ export const AppProvider = ({children})=>{
                 }
             }
             lisromm();
-        }
+        // }
       }, [homeId])
 
  

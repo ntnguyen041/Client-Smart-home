@@ -13,8 +13,6 @@ const Listing = () => {
   const so = 20;
   const { listRoom, lists,chart } = useContext(AppContext);
   
-
-
   return (
     <div className="LisitingSection ">
       <div className="heading flex">
