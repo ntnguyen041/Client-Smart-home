@@ -230,29 +230,30 @@ export const AppProvider = ({children})=>{
     
       useEffect(() => {
         //if(JSON.parse(localStorage.getItem("accessToKenHome"))){
-
             async function lisromm() {
                 listRoomdispatch({
                     type: 'GET_ROOM_API'
                 });
-                try {
-                    socket.emit("getitemhome1", {_id: user._id, homeId:homeId})
-                    socket.on("listRoom1", list => {
+                setTimeout(()=>{
+                    try {
+                        socket.emit("getitemhome1", {_id: user._id, homeId:homeId})
+                        socket.on("listRoom1", list => {
+                            listRoomdispatch({
+                                type: 'GET_ROOM_SUCCESS',
+                                data: list,
+                                
+                            });
+                            console.log(list)
+                        })
+                    } catch (errr) {
                         listRoomdispatch({
-                            type: 'GET_ROOM_SUCCESS',
-                            data: list,
-                            
+                            type: 'GET_ROOM_ERR'
                         });
-                        console.log(list)
-                    })
-                } catch (errr) {
-                    listRoomdispatch({
-                        type: 'GET_ROOM_ERR'
-                    });
-                }
+                    }
+                },300)
+               
             }
             lisromm();
-        
       }, [homeId])
 
  
