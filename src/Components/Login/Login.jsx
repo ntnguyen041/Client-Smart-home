@@ -70,7 +70,7 @@ const Login=()=>{
    }else{
     return(
         <div className="backgoundbody">
-            <h1 className="slg">Samrt Home Inifinity</h1>
+            <h1 className="slg">Smart Home Inifinity</h1>
         <section className="loginContainer">
          <form onSubmit={reqestOTP}>
              <h1>Sign in</h1>

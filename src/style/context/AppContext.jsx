@@ -229,7 +229,7 @@ export const AppProvider = ({children})=>{
 
     
       useEffect(() => {
-        if(homeId!==null){
+        //if(JSON.parse(localStorage.getItem("accessToKenHome"))){
 
             async function lisromm() {
                 listRoomdispatch({
@@ -252,7 +252,7 @@ export const AppProvider = ({children})=>{
                 }
             }
             lisromm();
-        }
+        
       }, [homeId])
 
  
