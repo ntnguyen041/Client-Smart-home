@@ -243,7 +243,6 @@ export const AppProvider = ({children})=>{
                                 data: list,
                                 
                             });
-                            console.log(list)
                         })
                     } catch (errr) {
                         listRoomdispatch({
