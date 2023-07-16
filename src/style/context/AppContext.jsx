@@ -302,7 +302,7 @@ export const AppProvider = ({children})=>{
             setIsDay,
             themeStyle:themeStyle[isDay?'night':'light'],
             user,
-            listhome:listhome,
+            listhome,
             sethomeid,
             homeId,
             listRoom,
