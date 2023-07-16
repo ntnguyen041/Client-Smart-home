@@ -229,19 +229,21 @@ export const AppProvider = ({children})=>{
 
     
       useEffect(() => {
-        // if(homeId!==null){
+        if(homeId!==null){
 
             async function lisromm() {
                 listRoomdispatch({
                     type: 'GET_ROOM_API'
                 });
                 try {
-                    socket.emit("getitemhome", homeId)
-                    socket.on("listRoom", list => {
+                    socket.emit("getitemhome1", {_id: user._id, homeId:homeId})
+                    socket.on("listRoom1", list => {
                         listRoomdispatch({
                             type: 'GET_ROOM_SUCCESS',
-                            data: list
+                            data: list,
+                            
                         });
+                        console.log(list)
                     })
                 } catch (errr) {
                     listRoomdispatch({
@@ -250,7 +252,7 @@ export const AppProvider = ({children})=>{
                 }
             }
             lisromm();
-        // }
+        }
       }, [homeId])
 
  

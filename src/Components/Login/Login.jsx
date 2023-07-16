@@ -76,7 +76,9 @@ const Login=()=>{
              <h1>Sign in</h1>
              <div className="txt_field">
                  <input type="tel" className="form-control" id="phoneNumberInput" value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)}/>
+                 {phoneNumber.length>10?"":
                  <label htmlFor="phoneNumberInput" className="form-label">Phone number</label>
+                 }
              </div>
              {expandForm===true?
              <>

@@ -36,7 +36,7 @@ const listhomeReduduces = (state, action) => {
 }
 
 const TopContent = () => {
-    const {sethomeid}=useContext(AppContext);
+    const {sethomeid,user}=useContext(AppContext);
 
     const homec = JSON.parse(localStorage.getItem("accessToKenHome"));
     const [listhome, listhomedispatch] = useReducer(listhomeReduduces, listhomeinitstate);

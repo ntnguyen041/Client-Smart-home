@@ -20,7 +20,7 @@ const date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFul
 
 const TopUser = () => {
     const [timeString, setTimeString] = useState('');
-    const {setIsDay} = useContext(AppContext);
+    const {setIsDay,user} = useContext(AppContext);
     useEffect(() => {
         setInterval(() => {
             const now = new Date();
@@ -31,8 +31,7 @@ const TopUser = () => {
         }, 1000);
     }, []);
    
-    const user= JSON.parse(localStorage.getItem("accessToKen"));
-    function setday(a){
+        function setday(a){
         if(localStorage.getItem("setiday")!=="true"){
             if(a>5&&a<18){
                 setIsDay(false)
@@ -63,7 +62,7 @@ const TopUser = () => {
                         <Darkmode />
                         </div>
                         <div className="adminImage">
-                            <img src={user.imageUser == "" ? imga : user.imageUser} alt="Tan Nguyen" />
+                            <img src={user.imageUser === "" ? imga : user.imageUser} alt="Tan Nguyen" />
                         </div>
                     </div>
                 </div>
